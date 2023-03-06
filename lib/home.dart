@@ -1,9 +1,9 @@
 //DashBoard for NSS
 
-import 'dart:html';
+//import 'dart:html';
 
 import 'package:flutter/material.dart';
-import '../colors/colors.dart';
+import 'colors/colors.dart';
 import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
 
 class homePage extends StatefulWidget {
@@ -23,13 +23,7 @@ class _homePageState extends State<homePage> {
       appBar: AppBar(
         actions: [
           Container(
-            // decoration: BoxDecoration(
-            //     borderRadius: BorderRadius.horizontal(
-            //         left: Radius.circular(20), right: Radius.circular(20)),
-            //     color: primaryred),
-            // //height: ,
             padding: EdgeInsets.fromLTRB(90, 10, 90, 0),
-            //margin: EdgeInsets.all(10),
             child: Center(
               child: Column(
                 children: [
@@ -40,7 +34,6 @@ class _homePageState extends State<homePage> {
                       Image.asset(
                         'assets/front_screen/nss.png',
                         height: 30,
-                        // width: 40,
                       ),
                       Text(' NSS FEED',
                           style: TextStyle(fontSize: 26, color: whitetext)),
@@ -48,12 +41,6 @@ class _homePageState extends State<homePage> {
                   ),
                   Center(
                     child: Container(
-                      // decoration: BoxDecoration(
-                      //     borderRadius: BorderRadius.circular(10),
-                      //     color: primaryred),
-                      //height: 2,
-                      //width: 90,
-                      //margin: EdgeInsets.only(bottom: 4),
                       child: Text('National Service Scheme',
                           style: TextStyle(fontSize: 11)),
                     ),
@@ -82,20 +69,7 @@ class _homePageState extends State<homePage> {
                     ),
                   ])
         ],
-
-        //leading: Icon(Icons.menu),
-        // side bar is pending to build
-        //foregroundColor: Colors.amber,
         elevation: 0.0,
-        //titleSpacing: 0,
-        // title: Text(
-        //   'NSS Community',
-        //   style: TextStyle(
-        //     fontSize: 25.0,
-        //   ),
-        // ),
-        //shape:
-        //  BeveledRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
       ),
       body: SafeArea(
         child: SingleChildScrollView(),
@@ -106,28 +80,22 @@ class _homePageState extends State<homePage> {
         type: BottomNavigationBarType.fixed,
         iconSize: 25,
         elevation: 0.0,
-
-        //unselectedFontSize: 15,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
-            // backgroundColor: nssBlueColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_box_rounded),
             label: 'Post',
-            // backgroundColor: nssBlueColor,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.notifications_sharp),
             label: 'Notifications',
-            //backgroundColor: theme,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Profile',
-            //backgroundColor: theme,
           ),
         ],
         onTap: (index) {

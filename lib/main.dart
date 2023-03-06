@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/Home/home.dart';
-import 'Home/home.dart';
+import 'package:nss_jmieti/home.dart';
+import 'home.dart';
 import 'colors/colors.dart';
 import 'login_signup/login.dart';
 import 'login_signup/signup.dart';
@@ -21,7 +21,7 @@ class MainApp extends StatelessWidget {
       title: 'Home',
       // Start the app with the "/" named route. In this case, the app starts
       // on the FirstScreen widget.
-      home: homePage(),
+      home: signupScreen(),
     );
   }
 }
