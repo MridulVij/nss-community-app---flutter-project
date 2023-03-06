@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/colors/colors.dart';
 
-class sideBar extends StatelessWidget {
-  // const sideBar({super.key});
+class sideBar extends StatefulWidget {
+  const sideBar({super.key});
+
+  @override
+  State<sideBar> createState() => _sideBarState();
+}
+
+class _sideBarState extends State<sideBar> {
   int adcount = 10;
   @override
   Widget build(BuildContext context) {
@@ -31,8 +37,12 @@ class sideBar extends StatelessWidget {
             leading: Icon(Icons.support),
             title: Text('Support Developers'),
             onTap: () {
-              // pending not working
-              adcount--;
+              setState(() {
+                adcount--;
+              });
+              if (adcount == 0) {
+                // pending
+              }
             },
             trailing: ClipOval(
               child: Container(
@@ -104,6 +114,7 @@ class sideBar extends StatelessWidget {
   }
 }
 
+// About developers
 class aboutDevs extends StatelessWidget {
   const aboutDevs({super.key});
 
