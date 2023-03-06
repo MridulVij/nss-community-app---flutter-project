@@ -3,6 +3,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:nss_jmieti/feed_data/homefeed.dart';
 import 'colors/colors.dart';
 import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
 
@@ -72,8 +73,12 @@ class _homePageState extends State<homePage> {
         elevation: 0.0,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(),
+        child: SingleChildScrollView(
+          // call homefeed(); method here
+          child: feedPosts(),
+        ),
       ),
+      // bottom border
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: whitetext,
         currentIndex: _currentIndex,
