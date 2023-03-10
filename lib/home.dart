@@ -21,6 +21,7 @@ class _homePageState extends State<homePage> {
     return Scaffold(
       drawer: sideBar(),
       backgroundColor: whitetext,
+
       appBar: AppBar(
         actions: [
           Container(
