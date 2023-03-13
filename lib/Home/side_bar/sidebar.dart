@@ -57,47 +57,48 @@ class _sideBarState extends State<sideBar> {
                   )),
             ),
           ),
-          ListTile(
-            leading: Icon(Icons.monetization_on_sharp),
-            title: Text('Donate Developers'),
-            onTap: () => null,
-          ),
+          // ListTile(
+          //   leading: Icon(Icons.monetization_on_sharp),
+          //   title: Text('Donate Developers'),
+          //   onTap: () => null,
+          // ),
           ListTile(
             leading: Icon(Icons.group_add_rounded),
             title: Text('About Developers'),
             onTap: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => aboutDevs())),
           ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.share),
-            title: Text('Share this App'),
-            onTap: () => null,
-          ),
-          ListTile(
-            leading: Icon(Icons.app_shortcut),
-            title: Text('More Apps'),
-            onTap: () => null,
-          ),
+          // Divider(),
+          // ListTile(
+          //   leading: Icon(Icons.share),
+          //   title: Text('Share this App'),
+          //   onTap: () => null,
+          // ),
+          // ListTile(
+          //   leading: Icon(Icons.app_shortcut),
+          //   title: Text('More Apps'),
+          //   onTap: () => null,
+          // ),
           // ListTile(
           //   leading: Icon(Icons.align_vertical_bottom_rounded),
           //   title: Text('About App Version'),
           //   onTap: () => null,
           // ),
-          Divider(),
-          ListTile(
-            leading: Icon(Icons.sentiment_satisfied_alt_sharp),
-            title: Text('Send Feedback'),
-            onTap: () => null,
-          ),
+          // Divider(),
+          // ListTile(
+          //   leading: Icon(Icons.sentiment_satisfied_alt_sharp),
+          //   title: Text('Send Feedback'),
+          //   onTap: () => null,
+          // ),
           Divider(),
           ListTile(
             leading: Icon(Icons.logout),
-            title: Text('Logout'),
+            title: Text('Log out'),
             onTap: () => null,
           ),
+          //Divider(),
           SizedBox(
-            height: 120,
+            height: 350,
           ),
           Container(
               height: 75,

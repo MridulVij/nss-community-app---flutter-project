@@ -50,7 +50,11 @@ class signinScreen extends StatelessWidget {
                       child: Column(children: <Widget>[
                         // Image.asset('assets/front_screen/nss.png',
                         //     height: 70.0, width: 70.0),
-                        Icon(Icons.account_circle, size: 70.0),
+                        Icon(
+                          Icons.account_circle,
+                          size: 70.0,
+                          color: Colors.grey[700],
+                        ),
                         Text('Log In',
                             style:
                                 TextStyle(color: nssBlueColor, fontSize: 30.0)),
@@ -59,7 +63,7 @@ class signinScreen extends StatelessWidget {
                         ),
                         Text('Already a User? Log In Now!',
                             style: TextStyle(
-                                color: Colors.grey[800], fontSize: 15.0)),
+                                color: Colors.grey[700], fontSize: 15.0)),
                       ]),
                     ),
                     SizedBox(
@@ -72,6 +76,7 @@ class signinScreen extends StatelessWidget {
                           height: 10,
                         ),
                         TextField(
+                          autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
@@ -83,6 +88,7 @@ class signinScreen extends StatelessWidget {
                           height: 10,
                         ),
                         TextField(
+                          autofocus: false,
                           obscureText: false,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(

@@ -2,7 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/colors/colors.dart';
 import 'package:nss_jmieti/colors/colors.dart';
-import 'package:nss_jmieti/home.dart';
+import 'package:nss_jmieti/screens/home.dart';
 import 'package:nss_jmieti/login_signup/login.dart';
 import 'package:nss_jmieti/login_signup/cards/card_widget.dart';
 

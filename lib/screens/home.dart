@@ -4,8 +4,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/feed_data/homefeed.dart';
-import 'colors/colors.dart';
+//import 'package:nss_jmieti/screens/post.dart';
+import 'package:nss_jmieti/screens/profile.dart';
+import '/colors/colors.dart';
 import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
+
+import 'notifications.dart';
 
 class homePage extends StatefulWidget {
   const homePage({super.key});
@@ -21,7 +25,6 @@ class _homePageState extends State<homePage> {
     return Scaffold(
       drawer: sideBar(),
       backgroundColor: whitetext,
-
       appBar: AppBar(
         actions: [
           Container(
@@ -79,37 +82,7 @@ class _homePageState extends State<homePage> {
           child: feedPosts(),
         ),
       ),
-      // bottom border
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: whitetext,
-        currentIndex: _currentIndex,
-        type: BottomNavigationBarType.fixed,
-        iconSize: 25,
-        elevation: 0.0,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add_box_rounded),
-            label: 'Post',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications_sharp),
-            label: 'Notifications',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.account_circle),
-            label: 'Profile',
-          ),
-        ],
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
-      ),
+      //bottomNavigationBar: BottomNav(),
     );
   }
 }
