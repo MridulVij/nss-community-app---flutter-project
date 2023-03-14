@@ -12,7 +12,12 @@ class _profileScreenState extends State<profileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        children: [],
+        children: [
+// Image
+// User Name
+// Email ID
+// Log out option
+        ],
       ),
     );
   }

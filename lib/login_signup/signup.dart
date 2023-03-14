@@ -2,9 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/colors/colors.dart';
 import 'package:nss_jmieti/colors/colors.dart';
+import 'package:nss_jmieti/main.dart';
 import 'package:nss_jmieti/screens/home.dart';
 import 'package:nss_jmieti/login_signup/login.dart';
 import 'package:nss_jmieti/login_signup/cards/card_widget.dart';
+
+var txtColor = Colors.grey[700];
 
 class signupScreen extends StatelessWidget {
   const signupScreen({super.key});
@@ -54,7 +57,11 @@ class signupScreen extends StatelessWidget {
                         child: Column(children: <Widget>[
                           // Image.asset('assets/front_screen/nss.png',
                           //     height: 70.0, width: 70.0),
-                          Icon(Icons.account_circle, size: 70.0),
+                          Icon(
+                            Icons.account_circle,
+                            size: 70.0,
+                            color: txtColor,
+                          ),
                           Text('Sign Up',
                               style: TextStyle(
                                   color: nssBlueColor, fontSize: 30.0)),
@@ -62,8 +69,8 @@ class signupScreen extends StatelessWidget {
                             height: 10,
                           ),
                           Text('New User? Sign Up Now!',
-                              style: TextStyle(
-                                  color: Colors.grey[800], fontSize: 15.0)),
+                              style:
+                                  TextStyle(color: txtColor, fontSize: 15.0)),
                         ]),
                       ),
                       SizedBox(
@@ -161,8 +168,8 @@ class signupScreen extends StatelessWidget {
                                 onPressed: () {
                                   //Implement login functionality.
                                 },
-                                minWidth: 120.0,
-                                height: 42.0,
+                                minWidth: double.maxFinite,
+                                height: 50.0,
                                 child: Text(
                                   'Sign Up',
                                   style: TextStyle(color: Colors.white),
@@ -178,7 +185,7 @@ class signupScreen extends StatelessWidget {
                           //   child: Text('Forget Password'),
                           // ),
 
-                          Text('OR'),
+                          Text('OR', style: TextStyle(color: txtColor)),
                           SizedBox(
                             height: 10,
                           ),
@@ -186,7 +193,8 @@ class signupScreen extends StatelessWidget {
                             child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Text('Already a User? '),
+                                  Text('Already a User? ',
+                                      style: TextStyle(color: txtColor)),
                                   // initialRoute: '/',
                                   // routes: {
                                   //   // When navigating to the "/" route, build the FirstScreen widget.
@@ -204,7 +212,7 @@ class signupScreen extends StatelessWidget {
                                     },
                                     child: Text(
                                       'Log In',
-                                      style: TextStyle(color: primaryred),
+                                      style: TextStyle(color: nssBlueColor),
                                     ),
                                   ),
                                 ]),
@@ -217,7 +225,7 @@ class signupScreen extends StatelessWidget {
                       GestureDetector(
                           onTap: () {
                             Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => homePage()));
+                                builder: (context) => spareScreen()));
                           },
                           child: Container(
                               height: 21,

@@ -53,7 +53,7 @@ class signinScreen extends StatelessWidget {
                         Icon(
                           Icons.account_circle,
                           size: 70.0,
-                          color: Colors.grey[700],
+                          color: txtColor,
                         ),
                         Text('Log In',
                             style:
@@ -62,8 +62,7 @@ class signinScreen extends StatelessWidget {
                           height: 10,
                         ),
                         Text('Already a User? Log In Now!',
-                            style: TextStyle(
-                                color: Colors.grey[700], fontSize: 15.0)),
+                            style: TextStyle(color: txtColor, fontSize: 15.0)),
                       ]),
                     ),
                     SizedBox(
@@ -104,13 +103,13 @@ class signinScreen extends StatelessWidget {
                     Container(
                         child: Column(
                       children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Forget Password',
-                            style: TextStyle(color: nssBlueColor),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () {},
+                        //   child: Text(
+                        //     'Forget Password',
+                        //     style: TextStyle(color: nssBlueColor),
+                        //   ),
+                        // ),
                         SizedBox(
                           height: 10,
                         ),
@@ -125,8 +124,8 @@ class signinScreen extends StatelessWidget {
                               onPressed: () {
                                 //Implement login functionality.
                               },
-                              minWidth: 120.0,
-                              height: 42.0,
+                              minWidth: double.maxFinite,
+                              height: 50.0,
                               child: Text(
                                 'Sign In',
                                 style: TextStyle(color: Colors.white),
@@ -142,7 +141,7 @@ class signinScreen extends StatelessWidget {
                         //   child: Text('Forget Password'),
                         // ),
 
-                        Text('OR'),
+                        Text('OR', style: TextStyle(color: txtColor)),
                         SizedBox(
                           height: 10,
                         ),
@@ -150,23 +149,20 @@ class signinScreen extends StatelessWidget {
                           child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text('New User? '),
+                                Text('New User? ',
+                                    style: TextStyle(color: txtColor)),
                                 GestureDetector(
-                                    onTap: () {
-                                      signupScreen();
-                                    },
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    signupScreen()));
-                                      },
-                                      child: Text(
-                                        'Sign Up',
-                                        style: TextStyle(color: primaryred),
-                                      ),
-                                    ))
+                                  onTap: () {
+                                    Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                signupScreen()));
+                                  },
+                                  child: Text(
+                                    'Sign Up',
+                                    style: TextStyle(color: nssBlueColor),
+                                  ),
+                                ),
                               ]),
                         )
                       ],
