@@ -65,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Text('OK'),
                 onPressed: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => homePage()));
+                      MaterialPageRoute(builder: (context) => spareScreen()));
                 },
               ),
             ],
@@ -103,7 +103,10 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: nssBlueColor,
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? Center(
+              child: CircularProgressIndicator(
+              color: whitetext,
+            ))
           : SafeArea(
               child: SingleChildScrollView(
                 child: Form(
@@ -142,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                                     size: 70.0,
                                     color: txtColor,
                                   ),
-                                  Text('Login In',
+                                  Text('Log In',
                                       style: TextStyle(
                                           color: nssBlueColor, fontSize: 30.0)),
                                   SizedBox(
@@ -228,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                                         minWidth: double.maxFinite,
                                         height: 50.0,
                                         child: Text(
-                                          'Login in',
+                                          'Log in',
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),

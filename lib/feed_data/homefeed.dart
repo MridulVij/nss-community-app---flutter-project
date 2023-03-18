@@ -10,10 +10,12 @@ class feedPosts extends StatefulWidget {
 class _feedPostsState extends State<feedPosts> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        //scrollable posts
-      ],
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          // all posts in which likes, comment, photo, images, text posts
+        ],
+      ),
     );
   }
 }

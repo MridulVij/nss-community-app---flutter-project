@@ -116,7 +116,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           // padding from inside the box
                           padding: EdgeInsets.only(
                               top: 10, left: 10, right: 10, bottom: 10),
-                          height: 650,
+                          height: 610,
                           width: 350,
                           decoration: BoxDecoration(
                             //borderRadius: BorderRadius.circular(40),
@@ -317,27 +317,27 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   )
                                 ],
                               )),
-                              SizedBox(
-                                height: 20,
-                              ),
-                              GestureDetector(
-                                  onTap: () {
-                                    Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                spareScreen()));
-                                  },
-                                  child: Container(
-                                      height: 21,
-                                      width: 39,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(13),
-                                        color: Color.fromARGB(123, 15, 12, 78),
-                                      ),
-                                      child: Center(
-                                        child: Text(' Skip ',
-                                            style: TextStyle(color: whitetext)),
-                                      ))),
+                              // SizedBox(
+                              //   height: 20,
+                              // ),
+                              // GestureDetector(
+                              //     onTap: () {
+                              //       Navigator.of(context).push(
+                              //           MaterialPageRoute(
+                              //               builder: (context) =>
+                              //                   spareScreen()));
+                              //     },
+                              //     child: Container(
+                              //         height: 21,
+                              //         width: 39,
+                              //         decoration: BoxDecoration(
+                              //           borderRadius: BorderRadius.circular(13),
+                              //           color: Color.fromARGB(123, 15, 12, 78),
+                              //         ),
+                              //         child: Center(
+                              //           child: Text(' Skip ',
+                              //               style: TextStyle(color: whitetext)),
+                              //         ))),
                             ],
                           ),
                         ),

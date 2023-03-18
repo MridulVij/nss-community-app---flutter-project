@@ -11,13 +11,18 @@ class _profileScreenState extends State<profileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-// Image
-// User Name
-// Email ID
-// Log out option
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Text('Profile'),
+            )
+            // Image
+            // User Name
+            // Email ID
+            // Log out option
+          ],
+        ),
       ),
     );
   }

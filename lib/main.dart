@@ -23,7 +23,7 @@ class MainApp extends StatelessWidget {
           ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: nssBlueColor)),
       debugShowCheckedModeBanner: false,
       title: 'Home',
-      home: RegistrationPage(),
+      home: spareScreen(),
       //spareScreen(),
     );
   }
