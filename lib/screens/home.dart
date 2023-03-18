@@ -4,11 +4,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/feed_data/homefeed.dart';
-//import 'package:nss_jmieti/screens/post.dart';
 import 'package:nss_jmieti/screens/profile.dart';
 import '/colors/colors.dart';
 import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
-
 import 'notifications.dart';
 
 class homePage extends StatefulWidget {
