@@ -14,11 +14,7 @@ class _notificationsScreenState extends State<notificationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-          child: WebviewScaffold(
-        url: 'https://nssjmieti.netlify.app/',
-        //initialChild: CircularProgressIndicator(),
-      )),
-    );
+        body: SafeArea(
+            child: WebviewScaffold(url: 'https://nssjmieti.netlify.app/')));
   }
 }

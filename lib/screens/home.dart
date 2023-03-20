@@ -8,6 +8,8 @@ import 'package:nss_jmieti/screens/profile.dart';
 import '/colors/colors.dart';
 import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
 import 'notifications.dart';
+//import 'package:ourads/ourads.dart';
+//import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 class homePage extends StatefulWidget {
   const homePage({super.key});
@@ -17,7 +19,23 @@ class homePage extends StatefulWidget {
 }
 
 class _homePageState extends State<homePage> {
-  int _currentIndex = 0;
+  int myIndex = 0;
+  //Banner Ad Code
+
+  // final BannerAd myBanner = BannerAd(
+  //   adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+  //   size: AdSize.banner,
+  //   request: AdRequest(),
+  //   listener: BannerAdListener(),
+  // );
+  //end
+
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   myBanner.load();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,12 +93,52 @@ class _homePageState extends State<homePage> {
         elevation: 0.0,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          // call homefeed(); method here
-          child: feedPosts(),
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              // call homefeed();
+              child: feedPosts(),
+            ),
+            //Banner Ad Code
+            // Container(
+            //   alignment: Alignment.center,
+            //   width: myBanner.size.width.toDouble(),
+            //   height: myBanner.size.height.toDouble(),
+            //   child: AdWidget(ad: myBanner),
+            // )
+          ],
         ),
       ),
-      //bottomNavigationBar: BottomNav(),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   onTap: (index) {
+      //     setState(() {
+      //       myIndex = index;
+      //     });
+      //   },
+      //   backgroundColor: whitetext,
+      //   currentIndex: myIndex,
+      //   type: BottomNavigationBarType.fixed,
+      //   iconSize: 25,
+      //   elevation: 0.0,
+      //   items: [
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.home),
+      //       label: 'Home',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.add_box_rounded),
+      //       label: 'Post',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.notifications_sharp),
+      //       label: 'Notifications',
+      //     ),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.account_circle),
+      //       label: 'Profile',
+      //     ),
+      //   ],
+      // ),
     );
   }
 }

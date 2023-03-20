@@ -108,7 +108,7 @@ class _PostMediaPageState extends State<PostMediaPage> {
   }
 
   Future _postMedia() async {
-    //
+    // Video api
     final url = Uri.parse('https://your-backend-api-url.com/post-media');
     final request = http.MultipartRequest('POST', url)
       ..files.add(await http.MultipartFile.fromPath('media', _mediaFile!.path));
