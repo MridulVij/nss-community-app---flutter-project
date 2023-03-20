@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/screens/home.dart';
 import 'package:nss_jmieti/screens/notifications.dart';
-//import 'package:nss_jmieti/screens/post.dart';
-//import 'package:images_picker/images_picker.dart';
 import 'package:nss_jmieti/screens/profile.dart';
 import 'screens/home.dart';
 import 'colors/colors.dart';
 import 'login_signup/login.dart';
 import 'login_signup/signup.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:http/http.dart' as http;
 
 void main() {
   runApp(const MainApp());
@@ -41,9 +44,9 @@ class _spareScreenState extends State<spareScreen> {
   int myIndex = 0;
   List<Widget> widgetList = [
     homePage(),
-    postBar(),
+    PostMediaPage(),
     notificationsScreen(),
-    profileScreen()
+    profileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -85,22 +88,75 @@ class _spareScreenState extends State<spareScreen> {
   }
 }
 
-class postBar extends StatefulWidget {
-  const postBar({super.key});
+// post bar
 
+class PostMediaPage extends StatefulWidget {
   @override
-  State<postBar> createState() => _postBarState();
+  _PostMediaPageState createState() => _PostMediaPageState();
 }
 
-class _postBarState extends State<postBar> {
+class _PostMediaPageState extends State<PostMediaPage> {
+  File? _mediaFile;
+  final picker = ImagePicker();
+
+  Future _pickMedia(ImageSource source) async {
+    final pickedFile = await picker.pickVideo(
+        source: source, maxDuration: const Duration(seconds: 30));
+    setState(() {
+      _mediaFile = File(pickedFile!.path);
+    });
+  }
+
+  Future _postMedia() async {
+    //
+    final url = Uri.parse('https://your-backend-api-url.com/post-media');
+    final request = http.MultipartRequest('POST', url)
+      ..files.add(await http.MultipartFile.fromPath('media', _mediaFile!.path));
+    final response = await request.send();
+    if (response.statusCode == 200) {
+      // Media was successfully posted to the backend API.
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Media posted successfully'),
+      ));
+    } else {
+      // Error occurred while posting media to the backend API.
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text('Error posting media'),
+      ));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      width: 1000,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        color: Colors.grey,
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Post Media'),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Center(
+            child: _mediaFile == null
+                ? Text('No media selected')
+                : SizedBox(
+                    height: 300.0,
+                    child: Image.file(_mediaFile!),
+                  ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              ElevatedButton(
+                onPressed: () => _pickMedia(ImageSource.gallery),
+                child: Text('Select Video'),
+              ),
+              ElevatedButton(
+                onPressed: _mediaFile == null ? null : _postMedia,
+                child: Text('Post Media'),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
