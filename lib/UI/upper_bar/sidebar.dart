@@ -1,7 +1,7 @@
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/colors/colors.dart';
-import 'package:nss_jmieti/login_signup/login.dart';
+import 'package:nss_jmieti/UI/colors/colors.dart';
+import 'package:nss_jmieti/Auth/login.dart';
 
 class sideBar extends StatefulWidget {
   const sideBar({super.key});

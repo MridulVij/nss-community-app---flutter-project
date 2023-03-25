@@ -1,11 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/colors/colors.dart';
-import 'package:nss_jmieti/colors/colors.dart';
+import 'package:nss_jmieti/UI/colors/colors.dart';
+import 'package:nss_jmieti/UI/colors/colors.dart';
 import 'package:nss_jmieti/main.dart';
-import 'package:nss_jmieti/screens/home.dart';
-import 'package:nss_jmieti/login_signup/login.dart';
-import 'package:nss_jmieti/login_signup/cards/card_widget.dart';
+import 'package:nss_jmieti/UI/bottom_bar/home.dart';
+import 'package:nss_jmieti/Auth/login.dart';
+import 'package:nss_jmieti/Auth/cards%20ui/card_widget.dart';
 
 import 'dart:convert';
 import 'package:flutter/material.dart';
@@ -77,8 +77,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Very Email Account'),
-            content: Text('Please Open Gmail App to Verify your Account!'),
+            title: Text('Verify Email Account!'),
+            content: Text(
+                'Please open gmail app with same Email ID & verify your account!'),
             // this app is for checking which type of response we recive from backend
             //Text(response.body),
             actions: <Widget>[
@@ -102,7 +103,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       backgroundColor: nssBlueColor,
       body: _isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator(color: Colors.white))
           : SafeArea(
               child: SingleChildScrollView(
                 child: Form(

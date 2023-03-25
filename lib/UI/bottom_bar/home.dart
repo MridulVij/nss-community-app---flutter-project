@@ -3,10 +3,10 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/feed_data/homefeed.dart';
-import 'package:nss_jmieti/screens/profile.dart';
-import '/colors/colors.dart';
-import 'package:nss_jmieti/Home/side_bar/sidebar.dart';
+import 'package:nss_jmieti/UI/homefeed.dart';
+import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
+import '../colors/colors.dart';
+import 'package:nss_jmieti/UI/upper_bar/sidebar.dart';
 import 'notifications.dart';
 //import 'package:ourads/ourads.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -93,20 +93,22 @@ class _homePageState extends State<homePage> {
         elevation: 0.0,
       ),
       body: SafeArea(
-        child: Column(
-          children: [
-            SingleChildScrollView(
-              // call homefeed();
-              child: feedPosts(),
-            ),
-            //Banner Ad Code
-            // Container(
-            //   alignment: Alignment.center,
-            //   width: myBanner.size.width.toDouble(),
-            //   height: myBanner.size.height.toDouble(),
-            //   child: AdWidget(ad: myBanner),
-            // )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            // call homefeed();
+            children: [
+              // we have to automate this
+              feedPosts(),
+              feedPosts(),
+            ],
+          ),
+          //Banner Ad Code
+          // Container(
+          //   alignment: Alignment.center,
+          //   width: myBanner.size.width.toDouble(),
+          //   height: myBanner.size.height.toDouble(),
+          //   child: AdWidget(ad: myBanner),
+          // )
         ),
       ),
       // bottomNavigationBar: BottomNavigationBar(
