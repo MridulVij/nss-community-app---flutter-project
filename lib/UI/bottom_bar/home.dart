@@ -92,55 +92,24 @@ class _homePageState extends State<homePage> {
         ],
         elevation: 0.0,
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            // call homefeed();
-            children: [
-              // we have to automate this
-              feedPosts(),
-              feedPosts(),
-            ],
-          ),
-          //Banner Ad Code
-          // Container(
-          //   alignment: Alignment.center,
-          //   width: myBanner.size.width.toDouble(),
-          //   height: myBanner.size.height.toDouble(),
-          //   child: AdWidget(ad: myBanner),
-          // )
+      body: SingleChildScrollView(
+        child: Column(
+          // call homefeed();
+          children: [
+            // we have to automate this
+            feedPosts(),
+
+            feedPosts(),
+          ],
         ),
+        //Banner Ad Code
+        // Container(
+        //   alignment: Alignment.center,
+        //   width: myBanner.size.width.toDouble(),
+        //   height: myBanner.size.height.toDouble(),
+        //   child: AdWidget(ad: myBanner),
+        // )
       ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   onTap: (index) {
-      //     setState(() {
-      //       myIndex = index;
-      //     });
-      //   },
-      //   backgroundColor: whitetext,
-      //   currentIndex: myIndex,
-      //   type: BottomNavigationBarType.fixed,
-      //   iconSize: 25,
-      //   elevation: 0.0,
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.home),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.add_box_rounded),
-      //       label: 'Post',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.notifications_sharp),
-      //       label: 'Notifications',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Icon(Icons.account_circle),
-      //       label: 'Profile',
-      //     ),
-      //   ],
-      // ),
     );
   }
 }
