@@ -7,5 +7,5 @@ const whitetext = Colors.white;
 const cardColor = Color.fromRGBO(81, 80, 80, 0.152);
 const nssBlueColor = Color.fromRGBO(48, 57, 131, 1);
 const txtColor = Color.fromARGB(255, 83, 83, 83);
-const backgnd = Color.fromRGBO(195, 199, 234, 1);
-const gry = Color.fromARGB(255, 109, 108, 108);
+const backgnd = Color.fromRGBO(203, 208, 252, 1);
+const gry = Color.fromARGB(255, 125, 125, 125);

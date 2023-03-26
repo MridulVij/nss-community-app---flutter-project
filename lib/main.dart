@@ -16,6 +16,10 @@ import 'package:http/http.dart' as http;
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+///
+
+///
+
 /////
 // void main() async {
 //   WidgetsFlutterBinding.ensureInitialized();
@@ -51,9 +55,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final nss1BlueColor = Color.fromRGBO(48, 57, 131, 1);
     return MaterialApp(
-      theme:
-          ThemeData(colorScheme: ColorScheme.fromSeed(seedColor: nssBlueColor)),
+      theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: nssBlueColor,
+              primary: nssBlueColor,
+              secondary: backgnd)),
       debugShowCheckedModeBanner: false,
       title: 'NSS Community',
       home: spareScreen(),

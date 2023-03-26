@@ -1,5 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
+import 'package:share_plus/share_plus.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 //import 'package:ourads/ourads.dart';
 //import 'package:image_picker/image_picker.dart';
@@ -14,42 +16,45 @@ class feedPosts extends StatefulWidget {
 class _feedPostsState extends State<feedPosts> {
   final usernameText =
       TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
-  final headLineText = TextStyle(fontSize: 15, color: Colors.grey);
+  final headLineText = TextStyle(fontSize: 15, color: txtColor);
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        border:
-            Border.symmetric(horizontal: BorderSide(width: 10, color: backgnd)),
-      ),
+          border:
+              BorderDirectional(bottom: BorderSide(width: 10, color: backgnd))),
       child: Column(children: [
         Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
               CircleAvatar(
-                radius: 25,
+                radius: 26,
                 backgroundColor: backgnd,
               ),
               SizedBox(width: 10),
-              Column(children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
-                  child: Text(
-                    'mridul luli',
-                    style: usernameText,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 0, 35, 0),
-                  child: Text(
-                    'Student',
-                    style: headLineText,
-                  ),
-                ),
-                Text('Sec ago', style: headLineText),
-              ]),
+              Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Padding(
+                    //   padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    //child:
+                    Text(
+                      'Mridul Vij',
+                      style: usernameText,
+                      //textAlign: TextAlign.left,
+                    ),
+                    // ),
+                    Text(
+                      'Teacher',
+                      style: headLineText,
+                      //textAlign: TextAlign.left,
+                    ),
+                    Text('Sec ago',
+                        style: TextStyle(fontSize: 11, color: Colors.grey)),
+                  ]),
               Padding(
-                padding: const EdgeInsets.fromLTRB(210, 0, 0, 0),
+                padding: const EdgeInsets.fromLTRB(225, 0, 0, 0),
                 child: GestureDetector(
                   child: Icon(
                     Icons.more_vert,
@@ -61,47 +66,70 @@ class _feedPostsState extends State<feedPosts> {
               )
             ])),
 
-        Text(
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
-            style: TextStyle(color: textblack)),
-
-        Container(height: 350, child: Image.asset('assets/mridul.jpg')),
-        Divider(),
         Padding(
           padding: const EdgeInsets.all(8.0),
+          child: Text(
+              'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
+              style: TextStyle(color: textblack)),
+        ),
+
+        Container(
+            height: 400, width: 400, child: Image.asset('assets/mayank.jpg')),
+        Divider(),
+        Padding(
+          padding: const EdgeInsets.all(5.0),
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    child: Image.asset(
-                      'assets/dislike2.png',
-                      height: 25,
-                      width: 25,
-                      color: gry,
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      // margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Image.asset(
+                        'assets/dislike2.png',
+                        width: 28,
+                        color: gry,
+                      ),
                     ),
                   ),
-                  Container(
-                      margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                      child: Icon(
-                        Icons.mode_comment_outlined,
-                        size: 25,
-                        color: gry,
-                      )),
-                  Container(
-                      margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
-                      child: Icon(
-                        Icons.share_outlined,
-                        size: 25,
-                        color: gry,
-                      ))
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: Icon(
+                          Icons.mode_comment_outlined,
+                          size: 28,
+                          color: gry,
+                        )),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                        margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
+                        child: Icon(
+                          Icons.share_outlined,
+                          size: 28,
+                          color: gry,
+                        )),
+                  ),
                 ],
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text('10M likes',
-                      style: TextStyle(fontSize: 15, color: textblack))
+                  SizedBox(width: 5),
+                  Text('9999 likes',
+                      textAlign: TextAlign.right,
+                      style: TextStyle(fontSize: 13, color: textblack)),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    child: Text('9999 Comments',
+                        textAlign: TextAlign.right,
+                        style: TextStyle(fontSize: 13, color: textblack)),
+                  )
                 ],
               )
             ],
@@ -117,5 +145,63 @@ class _feedPostsState extends State<feedPosts> {
       ]),
     );
     //);
+  }
+}
+
+// like , dislike, comment , share button
+class lscButton extends StatelessWidget {
+  lscButton(this.like, this.dislike, this.comments, this.share, this.margin,
+      this.icon);
+  final like;
+  final dislike;
+  final comments;
+  final share;
+  final margin;
+  final icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+          margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
+          child: Icon(
+            Icons.share_outlined,
+            size: 28,
+            color: gry,
+          )),
+    );
+  }
+}
+
+// share app module
+class shareApp extends StatefulWidget {
+  const shareApp({super.key});
+
+  @override
+  State<shareApp> createState() => _shareAppState();
+}
+
+class _shareAppState extends State<shareApp> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: whitetext,
+        //border: Border.all(width: 1, color: black),
+        borderRadius: BorderRadius.circular(100),
+      ),
+      child: IconButton(
+        onPressed: () {
+          //
+          Share.share(
+              "Digi Notes - Your Great Buddy For Academic Study\n \n App is Live\nDownload Now from Official Store: https://creatifyappsstore.blogspot.com/2023/02/digi-notes-app.html\n\n 100% Safe & Secure! \n \nExplore Creatify: https://creatifyappsstore.blogspot.com/");
+        },
+        icon: Icon(Icons.share),
+        iconSize: 45.0,
+        color: textblack,
+      ),
+    );
   }
 }

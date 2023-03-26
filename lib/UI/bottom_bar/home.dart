@@ -44,9 +44,12 @@ class _homePageState extends State<homePage> {
       appBar: AppBar(
         actions: [
           Container(
-            padding: EdgeInsets.fromLTRB(90, 10, 90, 0),
+            margin: EdgeInsets.fromLTRB(0, 0, 60, 0),
+            padding: EdgeInsets.fromLTRB(80, 10, 90, 0),
             child: Center(
               child: Column(
+                //mainAxisAlignment: MainAxisAlignment.center,
+                //crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -56,7 +59,7 @@ class _homePageState extends State<homePage> {
                         'assets/front_screen/nss.png',
                         height: 30,
                       ),
-                      Text(' NSS FEED',
+                      Text(' NSS',
                           style: TextStyle(fontSize: 26, color: whitetext)),
                     ],
                   ),
@@ -70,26 +73,27 @@ class _homePageState extends State<homePage> {
               ),
             ),
           ),
-          PopupMenuButton(
-              itemBuilder: (context) => [
-                    PopupMenuItem(
-                      child: Text('Follow Us'),
-                      value: 1,
-                    ),
-                    PopupMenuItem(
-                      child: Text('More Apps'),
-                      value: 1,
-                    ),
-                    PopupMenuItem(
-                      value: 2,
-                      child: Text('Send Feedback'),
-                    ),
-                    PopupMenuItem(
-                      child: Text('Share App with friends'),
-                      value: 1,
-                    ),
-                  ])
+          //   PopupMenuButton(
+          //       itemBuilder: (context) => [
+          //             PopupMenuItem(
+          //               child: Text('Follow Us'),
+          //               value: 1,
+          //             ),
+          //             PopupMenuItem(
+          //               child: Text('More Apps'),
+          //               value: 1,
+          //             ),
+          //             PopupMenuItem(
+          //               value: 2,
+          //               child: Text('Send Feedback'),
+          //             ),
+          //             PopupMenuItem(
+          //               child: Text('Share App with friends'),
+          //               value: 1,
+          //             ),
+          //           ])
         ],
+        //leading: Icon(Icons.search),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(
@@ -98,7 +102,21 @@ class _homePageState extends State<homePage> {
           children: [
             // we have to automate this
             feedPosts(),
-
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
+            feedPosts(),
             feedPosts(),
           ],
         ),

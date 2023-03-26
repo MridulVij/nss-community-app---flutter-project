@@ -1,3 +1,4 @@
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
@@ -11,7 +12,7 @@ class sideBar extends StatefulWidget {
 }
 
 class _sideBarState extends State<sideBar> {
-  int adcount = 10;
+  int adcount = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +21,7 @@ class _sideBarState extends State<sideBar> {
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('NSS Community App'),
+            accountName: Text('NSS JMIETI COMMUNITY'),
             accountEmail: Text('Developed in JMIETI, Radaur'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
@@ -35,6 +36,19 @@ class _sideBarState extends State<sideBar> {
             decoration: BoxDecoration(
               color: nssBlueColor,
             ),
+          ),
+          ListTile(
+            leading: Icon(Icons.feedback),
+            title: Text('Send Feedback'),
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => sendFeedback())),
+          ),
+          // problem on webview
+          ListTile(
+            leading: Icon(Icons.help),
+            title: Text('App Guide'),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => notificationsScreen())),
           ),
           ListTile(
             leading: Icon(Icons.support),
@@ -60,64 +74,77 @@ class _sideBarState extends State<sideBar> {
                   )),
             ),
           ),
-          // ListTile(
-          //   leading: Icon(Icons.monetization_on_sharp),
-          //   title: Text('Donate Developers'),
-          //   onTap: () => null,
-          // ),
           ListTile(
-            leading: Icon(Icons.group_add_rounded),
+            leading: Icon(Icons.android),
             title: Text('About Developers'),
             onTap: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => aboutDevs())),
           ),
-          // Divider(),
-          // ListTile(
-          //   leading: Icon(Icons.share),
-          //   title: Text('Share this App'),
-          //   onTap: () => null,
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.app_shortcut),
-          //   title: Text('More Apps'),
-          //   onTap: () => null,
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.align_vertical_bottom_rounded),
-          //   title: Text('About App Version'),
-          //   onTap: () => null,
-          // ),
-          // Divider(),
-          // ListTile(
-          //   leading: Icon(Icons.sentiment_satisfied_alt_sharp),
-          //   title: Text('Send Feedback'),
-          //   onTap: () => null,
-          // ),
           Divider(),
           ListTile(
-            leading: Icon(Icons.logout),
-            title: Text('Log out'),
+            leading: Icon(
+              Icons.logout,
+              color: Colors.red,
+            ),
+            title: Text('Log out', style: TextStyle(color: Colors.red)),
             onTap: () {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => LoginPage()));
             },
           ),
-          //Divider(),
-          SizedBox(
-            height: 350,
-          ),
-          Container(
-              height: 75,
-              child: Image.asset(
-                'assets/jmietixcreatify.png',
-                //height: 90,
-              )),
         ],
       ),
       shadowColor: textblack,
       elevation: 20.0,
       //width: 60,
     );
+  }
+}
+
+//Send Feedback
+class sendFeedback extends StatelessWidget {
+  const sendFeedback({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Submit Feedback')),
+      body: Column(children: [
+        Container(
+          child: TextFormField(
+            decoration:
+                InputDecoration(hintText: 'Write your feedback here...'),
+          ),
+        ),
+        Container(
+          width: 300,
+          child: ElevatedButton(
+            onPressed: () {},
+            child: Text('Submit'),
+          ),
+        )
+      ]),
+    );
+  }
+}
+
+// App Guide
+//import 'package:flutter/material.dart';
+//import 'package:webview_flutter/webview_flutter.dart';
+// import '../Home/side_bar/sidebar.dart';
+// import '../colors/colors.dart';
+
+class notificationsScreen extends StatefulWidget {
+  const notificationsScreen({super.key});
+
+  @override
+  State<notificationsScreen> createState() => _notificationsScreenState();
+}
+
+class _notificationsScreenState extends State<notificationsScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return WebviewScaffold(url: 'https://nssjmieti.netlify.app/');
   }
 }
 
