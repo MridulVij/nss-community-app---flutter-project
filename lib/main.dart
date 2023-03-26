@@ -1,9 +1,14 @@
-//import 'package:image_picker/image_picker.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/bottom_bar/home.dart';
 import 'package:nss_jmieti/UI/bottom_bar/notifications.dart';
 import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
-//import 'package:video_player/video_player.dart';
+import 'package:video_player/video_player.dart';
 import 'UI/bottom_bar/home.dart';
 import 'UI/colors/colors.dart';
 import 'Auth/login.dart';
@@ -81,10 +86,8 @@ class _spareScreenState extends State<spareScreen> {
   int myIndex = 0;
   List<Widget> widgetList = [
     homePage(),
-    homePage(),
-    homePage(),
-
-    //MyPage(),
+    MyPage(),
+    notificationsScreen(),
     //PostMediaPage(),
     //notificationsScreen(),
     profileScreen(),
@@ -129,130 +132,173 @@ class _spareScreenState extends State<spareScreen> {
   }
 }
 
-// import 'dart:io';
+class MyPage extends StatefulWidget {
+  @override
+  _MyPageState createState() => _MyPageState();
+}
 
-// import 'package:flutter/material.dart';
-// import 'package:image_picker/image_picker.dart';
-// import 'package:http/http.dart' as http;
+class _MyPageState extends State<MyPage> {
+  TextEditingController _textEditingController = TextEditingController();
+  File? _image;
+  File? _video;
 
-// class MyPage extends StatefulWidget {
-//   @override
-//   _MyPageState createState() => _MyPageState();
-// }
+  Future<void> _pickImage() async {
+    final pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
 
-// class _MyPageState extends State<MyPage> {
-//   TextEditingController _textEditingController = TextEditingController();
-//   File? _image;
-//   File? _video;
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    }
+  }
 
-//   Future<void> _pickImage() async {
-//     final pickedFile =
-//         await ImagePicker().pickImage(source: ImageSource.gallery);
+  Future<void> _pickVideo() async {
+    final pickedFile =
+        await ImagePicker().pickVideo(source: ImageSource.gallery);
 
-//     if (pickedFile != null) {
-//       setState(() {
-//         _image = File(pickedFile.path);
-//       });
-//     }
-//   }
+    if (pickedFile != null) {
+      setState(() {
+        _video = File(pickedFile.path);
+      });
+    }
+  }
 
-//   Future<void> _pickVideo() async {
-//     final pickedFile =
-//         await ImagePicker().pickVideo(source: ImageSource.gallery);
+  Future<void> _post() async {
+    final text = _textEditingController.text;
 
-//     if (pickedFile != null) {
-//       setState(() {
-//         _video = File(pickedFile.path);
-//       });
-//     }
-//   }
+    // Send the text, image, and video to the backend API
+    final request = http.MultipartRequest(
+      'POST',
+      Uri.parse('https://your-backend-api.com/post'),
+    );
+    request.fields['text'] = text;
+    if (_image != null) {
+      request.files.add(
+        await http.MultipartFile.fromPath('image', _image!.path),
+      );
+    }
+    if (_video != null) {
+      request.files.add(
+        await http.MultipartFile.fromPath('video', _video!.path),
+      );
+    }
 
-//   Future<void> _post() async {
-//     final text = _textEditingController.text;
+    final response = await request.send();
 
-//     // Send the text, image, and video to the backend API
-//     final request = http.MultipartRequest(
-//       'POST',
-//       Uri.parse('https://your-backend-api.com/post'),
-//     );
-//     request.fields['text'] = text;
-//     if (_image != null) {
-//       request.files.add(
-//         await http.MultipartFile.fromPath('image', _image!.path),
-//       );
-//     }
-//     if (_video != null) {
-//       request.files.add(
-//         await http.MultipartFile.fromPath('video', _video!.path),
-//       );
-//     }
+    if (response.statusCode == 200) {
+      // Post uploaded successfully
+    } else {
+      // Handle the error
+    }
+  }
 
-//     final response = await request.send();
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Create Post'),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    TextFormField(
+                      // style: TextStyle(fontSize: 200),
+                      maxLines: 1,
+                      minLines: 1,
+                      decoration: InputDecoration(
+                        hintText: 'Add Title',
+                        //contentPadding: EdgeInsets.symmetric(vertical: 90),
 
-//     if (response.statusCode == 200) {
-//       // Post uploaded successfully
-//     } else {
-//       // Handle the error
-//     }
-//   }
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 0.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    TextFormField(
+                      // style: TextStyle(fontSize: 200),
+                      maxLines: 10,
+                      minLines: 10,
+                      decoration: InputDecoration(
+                        hintText: 'Add Description',
+                        //contentPadding: EdgeInsets.symmetric(vertical: 90),
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Create Post'),
-//       ),
-//       body: Column(
-//         crossAxisAlignment: CrossAxisAlignment.stretch,
-//         children: [
-//           Expanded(
-//             child: SingleChildScrollView(
-//               child: Padding(
-//                 padding: EdgeInsets.all(16),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.stretch,
-//                   children: [
-//                     TextField(
-//                       controller: _textEditingController,
-//                       maxLines: null,
-//                       decoration: InputDecoration(
-//                         hintText: 'Enter your post text here...',
-//                       ),
-//                     ),
-//                     SizedBox(height: 16),
-//                     ElevatedButton(
-//                       onPressed: _pickImage,
-//                       child: Text('Pick Image'),
-//                     ),
-//                     SizedBox(height: 16),
-//                     ElevatedButton(
-//                       onPressed: _pickVideo,
-//                       child: Text('Pick Video'),
-//                     ),
-//                     SizedBox(height: 16),
-//                     _image != null ? Image.file(_image!) : SizedBox.shrink(),
-//                     SizedBox(height: 16),
-//                     if (_video != null)
-//                       SizedBox(
-//                         height: 200,
-//                         // child: VideoPlayer(_video!),
-//                       )
-//                     else
-//                       SizedBox.shrink(),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ),
-//           ElevatedButton(
-//             onPressed: _post,
-//             child: Text('Post'),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 0.5),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: _pickImage,
+                            child: Text('Add Photo'),
+                          ),
+                        ),
+                        SizedBox(width: 20),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: ElevatedButton(
+                            onPressed: _pickVideo,
+                            child: Text('Add Video'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 16),
+                    _image != null ? Image.file(_image!) : SizedBox.shrink(),
+                    SizedBox(height: 16),
+                    if (_video != null)
+                      SizedBox(
+                        height: 200,
+                        // problem
+                        child: VideoPlayer(_video!),
+                      )
+                    else
+                      SizedBox.shrink(),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              //width: 1,
+              height: 50,
+
+              child: ElevatedButton(
+                onPressed: _post,
+                child: Text(
+                  'Post',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 // // post bar
 

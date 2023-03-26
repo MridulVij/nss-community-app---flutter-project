@@ -108,21 +108,35 @@ class sendFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Submit Feedback')),
+      appBar: AppBar(
+        title: Text('Submit Feedback'),
+        elevation: 0.0,
+      ),
       body: Column(children: [
-        Container(
-          child: TextFormField(
-            decoration:
-                InputDecoration(hintText: 'Write your feedback here...'),
+        Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Container(
+            //width: ,
+            //height: 100,
+            child: TextFormField(
+              // style: TextStyle(fontSize: 200),
+              maxLines: 10,
+              minLines: 10,
+              decoration: InputDecoration(
+                hintText: 'Add a Feedback',
+                //contentPadding: EdgeInsets.symmetric(vertical: 90),
+
+                border: OutlineInputBorder(
+                  borderSide: BorderSide(width: 0.5),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+            ),
           ),
         ),
         Container(
-          width: 300,
-          child: ElevatedButton(
-            onPressed: () {},
-            child: Text('Submit'),
-          ),
-        )
+            width: 380,
+            child: ElevatedButton(onPressed: () {}, child: Text('Submit')))
       ]),
     );
   }
@@ -144,7 +158,9 @@ class notificationsScreen extends StatefulWidget {
 class _notificationsScreenState extends State<notificationsScreen> {
   @override
   Widget build(BuildContext context) {
-    return WebviewScaffold(url: 'https://nssjmieti.netlify.app/');
+    return WebviewScaffold(
+        url:
+            'https://developercreatify.blogspot.com/2023/03/nss-jmieti-app-guide.html');
   }
 }
 

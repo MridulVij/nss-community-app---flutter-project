@@ -9,3 +9,7 @@ const nssBlueColor = Color.fromRGBO(48, 57, 131, 1);
 const txtColor = Color.fromARGB(255, 83, 83, 83);
 const backgnd = Color.fromRGBO(203, 208, 252, 1);
 const gry = Color.fromARGB(255, 125, 125, 125);
+const activeCardColor = AssetImage('assets/dislike2.png');
+const inactiveCardColor = AssetImage(
+  'assets/dislike2.png',
+);

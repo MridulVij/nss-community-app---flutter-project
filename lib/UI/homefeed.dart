@@ -17,6 +17,7 @@ class _feedPostsState extends State<feedPosts> {
   final usernameText =
       TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
   final headLineText = TextStyle(fontSize: 15, color: txtColor);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -85,7 +86,11 @@ class _feedPostsState extends State<feedPosts> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      setState(() {
+                        print('liked');
+                      });
+                    },
                     child: Container(
                       // margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
                       child: Image.asset(
@@ -96,7 +101,17 @@ class _feedPostsState extends State<feedPosts> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => comments(
+                                    username: 'UserName',
+                                    timing: 'November 31',
+                                    commenttext:
+                                        'dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text dummy text jsdfb sf sfdhfhsf  fsd f sd g sjfhs  f sfuhfhsfhf  f ffh sfhk f  f h fh f fh sdkf ha f f fu yf uif;ifh 8yruf f f fu uil ',
+                                  )));
+                    },
                     child: Container(
                         margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
                         child: Icon(
@@ -201,6 +216,108 @@ class _shareAppState extends State<shareApp> {
         icon: Icon(Icons.share),
         iconSize: 45.0,
         color: textblack,
+      ),
+    );
+  }
+}
+
+class comments extends StatelessWidget {
+  //const comments({super.key});
+  comments({this.username, this.timing, this.commenttext});
+  final username;
+  final timing;
+  final commenttext;
+
+  @override
+  Widget build(BuildContext context) {
+    final _userTextStyle =
+        TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: textblack);
+    final _commentTextStyle = TextStyle(
+        fontSize: 15, fontWeight: FontWeight.normal, color: textblack);
+    final _timingTextstyle =
+        TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal, color: gry);
+    return Scaffold(
+      appBar: AppBar(title: Text('Comments'), elevation: 0.0),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 310,
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Add a Comment',
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(width: 1),
+                          borderRadius: BorderRadius.circular(50),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 1),
+                  Container(
+                    height: 55,
+                    width: 55,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: backgnd),
+                    child: Center(child: Icon(Icons.send)),
+                  ),
+                ],
+              ),
+            ),
+            SingleChildScrollView(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 280),
+                      child: Text('Latest Comments', style: _timingTextstyle),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(
+                                  Icons.account_circle,
+                                  size: 30,
+                                )),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(username, style: _userTextStyle),
+                                Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 5, 0),
+                                  child: Text(timing, style: _timingTextstyle),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(45, 0, 5, 0),
+                          child: Text(commenttext, style: _commentTextStyle),
+                        )
+                      ],
+                    ),
+                    Divider(
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                  ]),
+            ),
+          ],
+        ),
       ),
     );
   }
