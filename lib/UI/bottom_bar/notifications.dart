@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'package:nss_jmieti/UI/wev_view.dart';
+//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 //import '../Home/side_bar/sidebar.dart';
 import '../colors/colors.dart';
@@ -14,9 +15,7 @@ class notificationsScreen extends StatefulWidget {
 class _notificationsScreenState extends State<notificationsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: SafeArea(
-            child: WebviewScaffold(url: 'https://nssjmieti.netlify.app/')));
+    return Scaffold(body: webView());
   }
 }
 

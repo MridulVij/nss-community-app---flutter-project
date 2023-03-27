@@ -1,8 +1,9 @@
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:url_launcher/url_launcher.dart';
+//import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+//import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
 import 'package:nss_jmieti/Auth/login.dart';
+import 'package:nss_jmieti/UI/wev_view.dart';
 
 class sideBar extends StatefulWidget {
   const sideBar({super.key});
@@ -47,8 +48,8 @@ class _sideBarState extends State<sideBar> {
           ListTile(
             leading: Icon(Icons.help),
             title: Text('App Guide'),
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => notificationsScreen())),
+            onTap: () => Navigator.of(context)
+                .push(MaterialPageRoute(builder: (context) => appGuide())),
           ),
           ListTile(
             leading: Icon(Icons.support),
@@ -148,29 +149,13 @@ class sendFeedback extends StatelessWidget {
 // import '../Home/side_bar/sidebar.dart';
 // import '../colors/colors.dart';
 
-class notificationsScreen extends StatefulWidget {
-  const notificationsScreen({super.key});
-
-  @override
-  State<notificationsScreen> createState() => _notificationsScreenState();
-}
-
-class _notificationsScreenState extends State<notificationsScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return WebviewScaffold(
-        url:
-            'https://developercreatify.blogspot.com/2023/03/nss-jmieti-app-guide.html');
-  }
-}
-
 // About developers
 class aboutDevs extends StatelessWidget {
   Future<void> _launchURL(String url) async {
     final Uri uri = Uri(scheme: 'https', host: url);
-    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
-      throw 'can not launch url';
-    }
+    // if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+    //   throw 'can not launch url';
+    // }
   }
   //const aboutDevs({super.key});
   // final Uri _url1 = Uri.parse('https://www.linkedin.com/in/mayank-7a90b2178/');
