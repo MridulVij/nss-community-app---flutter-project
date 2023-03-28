@@ -96,6 +96,50 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
 
+  /// Teacher / Student Buttons
+  Color cardColor = activeCardColor;
+  Color cardColor2 = inactiveCardColor;
+
+  void updateColor1(int click) {
+    if (click == 1) {
+      if (cardColor == activeCardColor) {
+        cardColor = inactiveCardColor;
+        cardColor2 = activeCardColor;
+      } else {
+        cardColor = activeCardColor;
+      }
+    }
+    if (click == 2) {
+      if (cardColor2 == activeCardColor) {
+        cardColor2 = inactiveCardColor;
+        cardColor = activeCardColor;
+      } else {
+        cardColor2 = activeCardColor;
+      }
+    }
+  }
+
+  void updateColor2(int click) {
+    if (click == 1) {
+      if (cardColor == activeCardColor) {
+        cardColor = inactiveCardColor;
+        cardColor2 = activeCardColor;
+      } else {
+        cardColor = activeCardColor;
+      }
+    }
+    if (click == 2) {
+      if (cardColor2 == activeCardColor) {
+        cardColor2 = inactiveCardColor;
+        cardColor = activeCardColor;
+      } else {
+        cardColor2 = activeCardColor;
+      }
+    }
+  }
+
+  ///
+
   @override
   Widget build(BuildContext context) {
     var valuetaker;
@@ -117,7 +161,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           // padding from inside the box
                           padding: EdgeInsets.only(
                               top: 10, left: 10, right: 10, bottom: 10),
-                          height: 610,
+                          //custom height
                           width: 350,
                           decoration: BoxDecoration(
                             //borderRadius: BorderRadius.circular(40),
@@ -159,6 +203,36 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               Container(
                                   child: Column(
                                 children: [
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            print('clicked student');
+                                            updateColor1(1);
+                                          });
+                                        },
+                                        child: Button(
+                                            color: cardColor,
+                                            txt: 'Student',
+                                            width: 120),
+                                      ),
+                                      SizedBox(width: 5),
+                                      GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            print('clicked teacher');
+                                            updateColor1(2);
+                                          });
+                                        },
+                                        child: Button(
+                                            color: cardColor,
+                                            txt: 'Teacher',
+                                            width: 120),
+                                      ),
+                                    ],
+                                  ),
                                   SizedBox(
                                     height: 10,
                                   ),
@@ -443,9 +517,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 }
 
-
-
-
 // Original  UI without Backend
 
 // var txtColor = Colors.grey[700];
@@ -689,3 +760,25 @@ class _RegistrationPageState extends State<RegistrationPage> {
 //   }
 // }
 
+// Custom Button
+
+class Button extends StatelessWidget {
+  Button({required this.color, required this.txt, required this.width});
+  final Color color;
+  final String txt;
+  final double width;
+  //final text;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: width,
+      child: Center(child: Text(txt, style: TextStyle(fontSize: 15))),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(width: 1, color: Colors.grey),
+      ),
+    );
+  }
+}

@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
               secondary: backgnd)),
       debugShowCheckedModeBanner: false,
       title: 'NSS Community',
-      home: spareScreen(),
+      home: LoginPage(),
+      //spareScreen(),
     );
   }
 }

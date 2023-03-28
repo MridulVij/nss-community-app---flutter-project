@@ -162,6 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                               SizedBox(
                                 height: 10,
                               ),
+                              // Teacher / Student Buttons
                               Container(
                                   child: Column(
                                 children: [
@@ -305,6 +306,29 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
             ),
+    );
+  }
+}
+
+// Custom Button
+
+class Button extends StatelessWidget {
+  Button({required this.color, required this.txt, required this.width});
+  final Color color;
+  final String txt;
+  final double width;
+  //final text;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 40,
+      width: width,
+      child: Center(child: Text(txt, style: TextStyle(fontSize: 15))),
+      decoration: BoxDecoration(
+        color: color,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(width: 1, color: Colors.grey),
+      ),
     );
   }
 }
