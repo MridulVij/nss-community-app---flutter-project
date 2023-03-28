@@ -7,7 +7,7 @@ import 'package:nss_jmieti/UI/homefeed.dart';
 import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
 import '../colors/colors.dart';
 import 'package:nss_jmieti/UI/upper_bar/sidebar.dart';
-import 'notifications.dart';
+//import 'notifications.dart';
 //import 'package:ourads/ourads.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 
@@ -73,27 +73,7 @@ class _homePageState extends State<homePage> {
               ),
             ),
           ),
-          //   PopupMenuButton(
-          //       itemBuilder: (context) => [
-          //             PopupMenuItem(
-          //               child: Text('Follow Us'),
-          //               value: 1,
-          //             ),
-          //             PopupMenuItem(
-          //               child: Text('More Apps'),
-          //               value: 1,
-          //             ),
-          //             PopupMenuItem(
-          //               value: 2,
-          //               child: Text('Send Feedback'),
-          //             ),
-          //             PopupMenuItem(
-          //               child: Text('Share App with friends'),
-          //               value: 1,
-          //             ),
-          //           ])
         ],
-        //leading: Icon(Icons.search),
         elevation: 0.0,
       ),
       body: SingleChildScrollView(

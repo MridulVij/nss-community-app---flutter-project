@@ -1,49 +1,93 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class webView extends StatefulWidget {
-  const webView({super.key});
-  //webView({this.url});
+class WebViewScreen extends StatefulWidget {
+  final String url = 'https://nssjmieti.netlify.app';
+
+  //WebViewScreen({ });
 
   @override
-  State<webView> createState() => _webViewState();
+  _WebViewScreenState createState() => _WebViewScreenState();
 }
 
-class _webViewState extends State<webView> {
-  final String url1 = 'https://nssjmieti.netlify.app';
-  //final url;
+class _WebViewScreenState extends State<WebViewScreen> {
+  bool isLoading = true;
+  late WebViewController _controller;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: WebView(
-        initialUrl: url1,
-        javascriptMode: JavascriptMode.unrestricted,
+      body: Stack(
+        children: [
+          WebView(
+            initialUrl: widget.url,
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageStarted: (url) {
+              setState(() {
+                isLoading = true;
+              });
+            },
+            onPageFinished: (url) {
+              setState(() {
+                isLoading = false;
+              });
+            },
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller = webViewController;
+            },
+          ),
+          if (isLoading)
+            Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
       ),
-    ));
+    );
   }
 }
 
-class appGuide extends StatefulWidget {
-  const appGuide({super.key});
-  //webView({this.url});
+class WebViewScreen2 extends StatefulWidget {
+  final String url =
+      'https://developercreatify.blogspot.com/2023/03/nss-jmieti-app-guide.html';
+
+  //WebViewScreen({ });
 
   @override
-  State<appGuide> createState() => _appGuideState();
+  _WebViewScreen2State createState() => _WebViewScreen2State();
 }
 
-class _appGuideState extends State<appGuide> {
-  final String url2 =
-      'https://developercreatify.blogspot.com/2023/03/nss-jmieti-app-guide.html';
-  //final url;
+class _WebViewScreen2State extends State<WebViewScreen2> {
+  bool isLoading = true;
+  late WebViewController _controller;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: WebView(
-        initialUrl: url2,
-        javascriptMode: JavascriptMode.unrestricted,
+      body: Stack(
+        children: [
+          WebView(
+            initialUrl: widget.url,
+            javascriptMode: JavascriptMode.unrestricted,
+            onPageStarted: (url) {
+              setState(() {
+                isLoading = true;
+              });
+            },
+            onPageFinished: (url) {
+              setState(() {
+                isLoading = false;
+              });
+            },
+            onWebViewCreated: (WebViewController webViewController) {
+              _controller = webViewController;
+            },
+          ),
+          if (isLoading)
+            Center(
+              child: CircularProgressIndicator(),
+            ),
+        ],
       ),
-    ));
+    );
   }
 }

@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/bottom_bar/home.dart';
-import 'package:nss_jmieti/UI/bottom_bar/notifications.dart';
+//import 'package:nss_jmieti/UI/bottom_bar/notifications.dart';
 import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
 import 'package:video_player/video_player.dart';
 import 'UI/bottom_bar/home.dart';
@@ -15,10 +15,11 @@ import 'Auth/signup.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
-//import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import 'UI/wev_view.dart';
 
 void main() {
   runApp(MyApp());
@@ -57,7 +58,7 @@ class _spareScreenState extends State<spareScreen> {
     // Indexing of bottombar
     homePage(),
     MyPage(),
-    notificationsScreen(),
+    WebViewScreen(),
     profileScreen(),
   ];
   @override

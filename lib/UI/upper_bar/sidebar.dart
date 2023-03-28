@@ -48,8 +48,8 @@ class _sideBarState extends State<sideBar> {
           ListTile(
             leading: Icon(Icons.help),
             title: Text('App Guide'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => appGuide())),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => WebViewScreen2())),
           ),
           ListTile(
             leading: Icon(Icons.support),

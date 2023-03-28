@@ -75,7 +75,11 @@ class _feedPostsState extends State<feedPosts> {
         ),
 
         Container(
-            height: 400, width: 400, child: Image.asset('assets/mayank.jpg')),
+          color: backgnd,
+          height: 400,
+          width: 400,
+          //child: Image.asset('assets/mayank.jpg')
+        ),
         Divider(),
         Padding(
           padding: const EdgeInsets.all(5.0),
@@ -121,7 +125,10 @@ class _feedPostsState extends State<feedPosts> {
                         )),
                   ),
                   GestureDetector(
-                    onTap: () => shareApp(),
+                    onTap: () {
+                      Share.share(
+                          "Hi, I Created my Post on NSS JMIETI\n\nJoin Now NSS Community\nRegister here: https://nssjmieti.netlify.app/register \n\tor\nDownload the Nss Community App Now: https://creatifyappsstore.blogspot.com/2023/03/nss-community-app.html");
+                    },
                     child: Container(
                         margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
                         child: Icon(
@@ -189,37 +196,7 @@ class lscButton extends StatelessWidget {
   }
 }
 
-// share app module
-class shareApp extends StatefulWidget {
-  const shareApp({super.key});
-
-  @override
-  State<shareApp> createState() => _shareAppState();
-}
-
-class _shareAppState extends State<shareApp> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: whitetext,
-        //border: Border.all(width: 1, color: black),
-        borderRadius: BorderRadius.circular(100),
-      ),
-      child: IconButton(
-        onPressed: () {
-          Share.share(
-              "Digi Notes - Your Great Buddy For Academic Study\n \n App is Live\nDownload Now from Official Store: https://creatifyappsstore.blogspot.com/2023/02/digi-notes-app.html\n\n 100% Safe & Secure! \n \nExplore Creatify: https://creatifyappsstore.blogspot.com/");
-        },
-        icon: Icon(Icons.share),
-        iconSize: 45.0,
-        color: textblack,
-      ),
-    );
-  }
-}
-
+// comments info username, timing, commenttext
 class comments extends StatelessWidget {
   //const comments({super.key});
   comments({this.username, this.timing, this.commenttext});
