@@ -97,45 +97,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   /// Teacher / Student Buttons
-  Color cardColor = activeCardColor;
-  Color cardColor2 = inactiveCardColor;
-
-  void updateColor1(int click) {
-    if (click == 1) {
-      if (cardColor == activeCardColor) {
-        cardColor = inactiveCardColor;
-        cardColor2 = activeCardColor;
-      } else {
-        cardColor = activeCardColor;
-      }
-    }
-    if (click == 2) {
-      if (cardColor2 == activeCardColor) {
-        cardColor2 = inactiveCardColor;
-        cardColor = activeCardColor;
-      } else {
-        cardColor2 = activeCardColor;
-      }
-    }
-  }
-
-  void updateColor2(int click) {
-    if (click == 1) {
-      if (cardColor == activeCardColor) {
-        cardColor = inactiveCardColor;
-        cardColor2 = activeCardColor;
-      } else {
-        cardColor = activeCardColor;
-      }
-    }
-    if (click == 2) {
-      if (cardColor2 == activeCardColor) {
-        cardColor2 = inactiveCardColor;
-        cardColor = activeCardColor;
-      } else {
-        cardColor2 = activeCardColor;
-      }
-    }
+  void updateColor(int click) {
+    if (click == 1) {}
   }
 
   ///
@@ -181,10 +144,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             children: <Widget>[
                               Container(
                                 child: Column(children: <Widget>[
-                                  Icon(
-                                    Icons.account_circle,
-                                    size: 70.0,
-                                    color: txtColor,
+                                  CircleAvatar(
+                                    radius: 40,
+                                    backgroundColor: Colors.grey[200],
+                                    child: Icon(
+                                      Icons.add_a_photo,
+                                      size: 50.0,
+                                      color: txtColor,
+                                    ),
                                   ),
                                   Text('Sign Up',
                                       style: TextStyle(
@@ -210,7 +177,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         onTap: () {
                                           setState(() {
                                             print('clicked student');
-                                            updateColor1(1);
+                                            updateColor(1);
                                           });
                                         },
                                         child: Button(
@@ -223,7 +190,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         onTap: () {
                                           setState(() {
                                             print('clicked teacher');
-                                            updateColor1(2);
+                                            updateColor(2);
                                           });
                                         },
                                         child: Button(
