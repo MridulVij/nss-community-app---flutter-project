@@ -3,7 +3,7 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/homefeed.dart';
+import 'package:nss_jmieti/UI/feedposts.dart';
 import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
 import '../colors/colors.dart';
 import 'package:nss_jmieti/UI/upper_bar/sidebar.dart';
@@ -81,12 +81,6 @@ class _homePageState extends State<homePage> {
           // call homefeed();
           children: [
             // we have to automate this
-            feedPosts(),
-            feedPosts(),
-            feedPosts(),
-            feedPosts(),
-            feedPosts(),
-            feedPosts(),
             feedPosts(),
             feedPosts(),
             feedPosts(),
