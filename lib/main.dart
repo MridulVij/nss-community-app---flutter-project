@@ -10,8 +10,8 @@ import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
 import 'package:video_player/video_player.dart';
 import 'UI/bottom_bar/home.dart';
 import 'UI/colors/colors.dart';
-import 'Auth/login.dart';
-import 'Auth/signup.dart';
+import 'Auth/Views/login_view.dart';
+import 'Auth/Views/signup_view.dart';
 //import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               secondary: backgnd)),
       debugShowCheckedModeBanner: false,
       title: 'NSS Community',
-      home: LoginPage(),
+      home: spareScreen(),
       //spareScreen(),
     );
   }

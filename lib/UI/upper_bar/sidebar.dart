@@ -2,7 +2,7 @@
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/Auth/login.dart';
+import 'package:nss_jmieti/Auth/Views/login_view.dart';
 import 'package:nss_jmieti/UI/wev_view.dart';
 
 class sideBar extends StatefulWidget {
