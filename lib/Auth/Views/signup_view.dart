@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
 import 'package:nss_jmieti/UI/colors/colors.dart';
 import 'package:nss_jmieti/main.dart';
+import 'package:get/get.dart';
 import 'package:nss_jmieti/UI/bottom_bar/home.dart';
 import 'package:nss_jmieti/Auth/Views/login_view.dart';
 import 'package:nss_jmieti/Auth/Views/cards%20ui/card_widget.dart';
@@ -60,8 +61,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               TextButton(
                 child: Text('OK'),
                 onPressed: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => homePage()));
+                  Get.to(homePage());
                 },
               ),
             ],
@@ -341,10 +341,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                                   TextStyle(color: txtColor)),
                                           GestureDetector(
                                             onTap: () {
-                                              Navigator.of(context).push(
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          LoginPage()));
+                                              Get.to(LoginPage());
                                             },
                                             child: Text(
                                               'Log In',

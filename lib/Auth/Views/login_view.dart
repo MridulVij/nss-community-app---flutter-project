@@ -57,10 +57,12 @@ class _LoginPageState extends State<LoginPage> {
 
     if (response.statusCode == 200) {
       // registration successful, display success message
+      // String token = response["maintoken"];
       showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
+            //
             title: Text('Login Successfully!'),
             content: Text('Email ID & Password is Correct!'),
             actions: <Widget>[
