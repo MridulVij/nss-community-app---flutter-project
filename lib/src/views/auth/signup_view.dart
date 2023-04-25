@@ -174,7 +174,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             updateColor(1);
                                           });
                                         },
-                                        child: const Button(
+                                        child: Button(
                                             color: cardColor,
                                             txt: 'Student',
                                             width: 120),
@@ -187,7 +187,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             updateColor(2);
                                           });
                                         },
-                                        child: const Button(
+                                        child: Button(
                                             color: cardColor,
                                             txt: 'Teacher',
                                             width: 120),

@@ -114,8 +114,8 @@ class _LoginPageState extends State<LoginPage> {
                           // width: 350,
                           decoration: BoxDecoration(
                             //borderRadius: BorderRadius.circular(40),
-                            boxShadow: const [
-                              BoxShadow(
+                            boxShadow: [
+                              const BoxShadow(
                                 color: Colors.black,
                                 offset:
                                     Offset(5, 5), // changes position of shadow
@@ -129,19 +129,19 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                child: Column(children: const <Widget>[
-                                  Icon(
+                                child: Column(children: <Widget>[
+                                  const Icon(
                                     Icons.account_circle,
                                     size: 70.0,
                                     color: txtColor,
                                   ),
-                                  Text('Log In',
+                                  const Text('Log In',
                                       style: TextStyle(
                                           color: nssBlueColor, fontSize: 30.0)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Text('Already a User? Login Now!',
+                                  const Text('Already a User? Login Now!',
                                       style: TextStyle(
                                           color: txtColor, fontSize: 15.0)),
                                 ]),
@@ -256,7 +256,7 @@ class _LoginPageState extends State<LoginPage> {
                                               Navigator.of(context).push(
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                          RegistrationPage()));
+                                                          const RegistrationPage()));
                                             },
                                             child: const Text(
                                               'Sign Up',
@@ -301,8 +301,7 @@ class _LoginPageState extends State<LoginPage> {
 // Custom Button
 
 class Button extends StatelessWidget {
-  const Button(
-      {super.key, required this.color, required this.txt, required this.width});
+  Button({required this.color, required this.txt, required this.width});
   final Color color;
   final String txt;
   final double width;

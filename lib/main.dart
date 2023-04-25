@@ -43,7 +43,7 @@ class _spareScreenState extends State<spareScreen> {
     // Indexing of bottombar
     const homePage(),
     const MyPage(),
-    WebViewScreen(),
+    const WebViewScreen(),
     const profileScreen(),
   ];
   @override
