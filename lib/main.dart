@@ -1,28 +1,12 @@
-import 'package:image_picker/image_picker.dart';
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
-import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/bottom_bar/home.dart';
-//import 'package:nss_jmieti/UI/bottom_bar/notifications.dart';
-import 'package:nss_jmieti/UI/bottom_bar/profile.dart';
-import 'package:video_player/video_player.dart';
-import 'UI/bottom_bar/home.dart';
-import 'UI/colors/colors.dart';
-import 'Auth/Views/login_view.dart';
-import 'Auth/Views/signup_view.dart';
-//import 'package:image_picker/image_picker.dart';
-import 'dart:io';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-//import 'package:shared_preferences/shared_preferences.dart';
-import 'package:webview_flutter/webview_flutter.dart';
-
-import 'UI/wev_view.dart';
+import 'package:nss_jmieti/src/views/home/home.dart';
+import 'package:nss_jmieti/src/views/home/profile/profile.dart';
+import 'src/constants/colors.dart';
+import 'src/views/home/notifications/notifications.dart';
+import 'src/views/home/post/create_post.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -39,7 +23,7 @@ class MyApp extends StatelessWidget {
               secondary: backgnd)),
       debugShowCheckedModeBanner: false,
       title: 'NSS Community',
-      home: spareScreen(),
+      home: const spareScreen(),
       //spareScreen(),
     );
   }
@@ -57,10 +41,10 @@ class _spareScreenState extends State<spareScreen> {
   int myIndex = 0;
   List<Widget> widgetList = [
     // Indexing of bottombar
-    homePage(),
-    MyPage(),
+    const homePage(),
+    const MyPage(),
     WebViewScreen(),
-    profileScreen(),
+    const profileScreen(),
   ];
   @override
   Widget build(BuildContext context) {
@@ -79,7 +63,7 @@ class _spareScreenState extends State<spareScreen> {
         type: BottomNavigationBarType.fixed,
         iconSize: 25,
         elevation: 0.0,
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -95,175 +79,6 @@ class _spareScreenState extends State<spareScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Profile',
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// post section
-class MyPage extends StatefulWidget {
-  @override
-  _MyPageState createState() => _MyPageState();
-}
-
-class _MyPageState extends State<MyPage> {
-  TextEditingController _textEditingController = TextEditingController();
-  File? _image;
-  File? _video;
-
-  Future<void> _pickImage() async {
-    final pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
-
-  Future<void> _pickVideo() async {
-    final pickedFile =
-        await ImagePicker().pickVideo(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _video = File(pickedFile.path);
-      });
-    }
-  }
-
-  Future<void> _post() async {
-    final text = _textEditingController.text;
-
-    // Send the text, image, and video to the backend API
-    final request = http.MultipartRequest(
-      'POST',
-      Uri.parse('https://your-backend-api.com/post'),
-    );
-    request.fields['text'] = text;
-    if (_image != null) {
-      request.files.add(
-        await http.MultipartFile.fromPath('image', _image!.path),
-      );
-    }
-    if (_video != null) {
-      request.files.add(
-        await http.MultipartFile.fromPath('video', _video!.path),
-      );
-    }
-
-    final response = await request.send();
-
-    if (response.statusCode == 200) {
-      // Post uploaded successfully
-    } else {
-      // Handle the error
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Create Post'),
-      ),
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    TextFormField(
-                      // style: TextStyle(fontSize: 200),
-                      maxLines: 1,
-                      minLines: 1,
-                      decoration: InputDecoration(
-                        hintText: 'Add Title',
-                        //contentPadding: EdgeInsets.symmetric(vertical: 90),
-
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 0.5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    TextFormField(
-                      // style: TextStyle(fontSize: 200),
-                      maxLines: 10,
-                      minLines: 10,
-                      decoration: InputDecoration(
-                        hintText: 'Add Description',
-                        //contentPadding: EdgeInsets.symmetric(vertical: 90),
-
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 0.5),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 16),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ElevatedButton(
-                            onPressed: _pickImage,
-                            child: Text('Add Photo'),
-                          ),
-                        ),
-                        SizedBox(width: 20),
-                        Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ElevatedButton(
-                            onPressed: _pickVideo,
-                            child: Text('Add Video'),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 16),
-                    _image != null ? Image.file(_image!) : SizedBox.shrink(),
-                    SizedBox(height: 16),
-                    if (_video != null)
-                      SizedBox(
-                        height: 200,
-                        // problem
-                        //child: VideoPlayer(_video!),
-                      )
-                    else
-                      SizedBox.shrink(),
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Container(
-              //width: 1,
-              height: 50,
-
-              child: ElevatedButton(
-                onPressed: _post,
-                child: Text(
-                  'Post',
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-            ),
           ),
         ],
       ),

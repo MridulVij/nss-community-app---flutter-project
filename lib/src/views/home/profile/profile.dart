@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
+
+import '../../../constants/colors.dart';
 
 class profileScreen extends StatefulWidget {
   const profileScreen({super.key});
@@ -17,53 +18,53 @@ class _profileScreenState extends State<profileScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           //crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 CircleAvatar(
                   radius: 80,
                   backgroundColor: backgnd,
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Change UserName',
                   style: TextStyle(fontSize: 30),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 GestureDetector(
                     onTap: () {},
                     child: Container(
-                      child: Icon(Icons.edit),
+                      child: const Icon(Icons.edit),
                     ))
               ],
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'ChangePassword',
                   style: TextStyle(fontSize: 30),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 GestureDetector(
                     onTap: () {},
                     child: Container(
-                      child: Icon(Icons.edit),
+                      child: const Icon(Icons.edit),
                     ))
               ],
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {},
-              child: Text('Save Changes'),
+              child: const Text('Save Changes'),
             ),
             // Image
             // User Name

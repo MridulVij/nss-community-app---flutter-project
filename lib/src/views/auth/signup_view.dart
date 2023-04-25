@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/main.dart';
+import 'package:nss_jmieti/src/constants/colors.dart';
 import 'package:get/get.dart';
-import 'package:nss_jmieti/UI/bottom_bar/home.dart';
-import 'package:nss_jmieti/Auth/Views/login_view.dart';
-import 'package:nss_jmieti/Auth/Views/cards%20ui/card_widget.dart';
-
+import 'package:nss_jmieti/src/views/home/home.dart';
+import 'package:nss_jmieti/src/views/auth/login_view.dart';
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 class RegistrationPage extends StatefulWidget {
+  const RegistrationPage({super.key});
+
   @override
   _RegistrationPageState createState() => _RegistrationPageState();
 }
@@ -55,13 +52,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Registration Successful'),
-            content: Text('Your account has been created successfully.'),
+            title: const Text('Registration Successful'),
+            content: const Text('Your account has been created successfully.'),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
-                  Get.to(homePage());
+                  Get.to(const homePage());
                 },
               ),
             ],
@@ -74,14 +71,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Verify Email Account!'),
-            content: Text(
+            title: const Text('Verify Email Account!'),
+            content: const Text(
                 'Please open gmail app with same Email ID & verify your account!'),
             // this app is for checking which type of response we recive from backend
             //Text(response.body),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -107,7 +104,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     return Scaffold(
       backgroundColor: nssBlueColor,
       body: _isLoading
-          ? Center(child: CircularProgressIndicator(color: Colors.white))
+          ? const Center(child: CircularProgressIndicator(color: Colors.white))
           : SafeArea(
               child: SingleChildScrollView(
                 child: Form(
@@ -117,15 +114,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.all(20),
+                          margin: const EdgeInsets.all(20),
                           // padding from inside the box
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 10, left: 10, right: 10, bottom: 10),
                           //custom height
                           width: 350,
                           decoration: BoxDecoration(
                             //borderRadius: BorderRadius.circular(40),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black,
                                 offset:
@@ -144,24 +141,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   CircleAvatar(
                                     radius: 40,
                                     backgroundColor: Colors.grey[200],
-                                    child: Icon(
+                                    child: const Icon(
                                       Icons.add_a_photo,
                                       size: 50.0,
                                       color: txtColor,
                                     ),
                                   ),
-                                  Text('Sign Up',
+                                  const Text('Sign Up',
                                       style: TextStyle(
                                           color: nssBlueColor, fontSize: 30.0)),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
-                                  Text('New User? Sign Up Now!',
+                                  const Text('New User? Sign Up Now!',
                                       style: TextStyle(
                                           color: txtColor, fontSize: 15.0)),
                                 ]),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               Container(
@@ -177,12 +174,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             updateColor(1);
                                           });
                                         },
-                                        child: Button(
+                                        child: const Button(
                                             color: cardColor,
                                             txt: 'Student',
                                             width: 120),
                                       ),
-                                      SizedBox(width: 5),
+                                      const SizedBox(width: 5),
                                       GestureDetector(
                                         onTap: () {
                                           setState(() {
@@ -190,14 +187,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             updateColor(2);
                                           });
                                         },
-                                        child: Button(
+                                        child: const Button(
                                             color: cardColor,
                                             txt: 'Teacher',
                                             width: 120),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -216,7 +213,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -235,7 +232,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -248,7 +245,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       labelText: 'Mobile No.',
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -268,7 +265,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -288,7 +285,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                       } else {}
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                 ],
@@ -296,15 +293,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               Container(
                                   child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 10.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0),
                                     child: Material(
                                       color: nssBlueColor,
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(30.0)),
                                       elevation: 0.0,
                                       child: MaterialButton(
@@ -317,18 +314,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         },
                                         minWidth: double.maxFinite,
                                         height: 50.0,
-                                        child: Text(
+                                        child: const Text(
                                           'Sign Up',
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 5,
                                   ),
-                                  Text('OR', style: TextStyle(color: txtColor)),
-                                  SizedBox(
+                                  const Text('OR',
+                                      style: TextStyle(color: txtColor)),
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Container(
@@ -336,14 +334,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text('Already a User? ',
+                                          const Text('Already a User? ',
                                               style:
                                                   TextStyle(color: txtColor)),
                                           GestureDetector(
                                             onTap: () {
-                                              Get.to(LoginPage());
+                                              Get.to(const LoginPage());
                                             },
-                                            child: Text(
+                                            child: const Text(
                                               'Log In',
                                               style: TextStyle(
                                                   color: nssBlueColor),

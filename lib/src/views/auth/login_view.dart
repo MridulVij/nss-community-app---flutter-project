@@ -1,34 +1,20 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/Auth/Views/signup_view.dart';
-import 'package:nss_jmieti/main.dart';
-import 'package:nss_jmieti/UI/bottom_bar/home.dart';
-import 'package:nss_jmieti/Auth/Views/login_view.dart';
-import 'package:nss_jmieti/Auth/Views/cards%20ui/card_widget.dart';
-
+import 'package:nss_jmieti/src/constants/colors.dart';
+import 'package:nss_jmieti/src/views/auth/signup_view.dart';
 import 'dart:convert';
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-//import 'package:shared_preferences/shared_preferences.dart';
-
-//import 'home.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-  // final TextEditingController _mobileController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  // final TextEditingController _rePasswordController = TextEditingController();
 
   bool _isLoading = false;
 
@@ -63,11 +49,11 @@ class _LoginPageState extends State<LoginPage> {
         builder: (BuildContext context) {
           return AlertDialog(
             //
-            title: Text('Login Successfully!'),
-            content: Text('Email ID & Password is Correct!'),
+            title: const Text('Login Successfully!'),
+            content: const Text('Email ID & Password is Correct!'),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
                   // go to sparescreen
                 },
@@ -82,13 +68,13 @@ class _LoginPageState extends State<LoginPage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text('Wrong Details! Try Again.'),
-            content: Text('Please Enter Correct Email ID & Password!'),
+            title: const Text('Wrong Details! Try Again.'),
+            content: const Text('Please Enter Correct Email ID & Password!'),
             // this app is for checking which type of response we recive from backend
             //Text(response.body),
             actions: <Widget>[
               TextButton(
-                child: Text('OK'),
+                child: const Text('OK'),
                 onPressed: () {
                   Navigator.of(context).pop();
                 },
@@ -107,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: nssBlueColor,
       body: _isLoading
-          ? Center(
+          ? const Center(
               child: CircularProgressIndicator(
               color: whitetext,
             ))
@@ -120,15 +106,15 @@ class _LoginPageState extends State<LoginPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
                         Container(
-                          margin: EdgeInsets.all(20),
+                          margin: const EdgeInsets.all(20),
                           // padding from inside the box
-                          padding: EdgeInsets.only(
+                          padding: const EdgeInsets.only(
                               top: 10, left: 10, right: 10, bottom: 10),
                           // height: 420,
                           // width: 350,
                           decoration: BoxDecoration(
                             //borderRadius: BorderRadius.circular(40),
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                 color: Colors.black,
                                 offset:
@@ -143,7 +129,7 @@ class _LoginPageState extends State<LoginPage> {
                           child: Column(
                             children: <Widget>[
                               Container(
-                                child: Column(children: <Widget>[
+                                child: Column(children: const <Widget>[
                                   Icon(
                                     Icons.account_circle,
                                     size: 70.0,
@@ -160,14 +146,14 @@ class _LoginPageState extends State<LoginPage> {
                                           color: txtColor, fontSize: 15.0)),
                                 ]),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 10,
                               ),
                               // Teacher / Student Buttons
                               Container(
                                   child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -186,7 +172,7 @@ class _LoginPageState extends State<LoginPage> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   TextFormField(
@@ -206,7 +192,7 @@ class _LoginPageState extends State<LoginPage> {
                                       return null;
                                     },
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                 ],
@@ -214,15 +200,15 @@ class _LoginPageState extends State<LoginPage> {
                               Container(
                                   child: Column(
                                 children: [
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Padding(
-                                    padding:
-                                        EdgeInsets.symmetric(vertical: 10.0),
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10.0),
                                     child: Material(
                                       color: nssBlueColor,
-                                      borderRadius: BorderRadius.all(
+                                      borderRadius: const BorderRadius.all(
                                           Radius.circular(30.0)),
                                       elevation: 0.0,
                                       child: MaterialButton(
@@ -242,18 +228,19 @@ class _LoginPageState extends State<LoginPage> {
                                         },
                                         minWidth: double.maxFinite,
                                         height: 50.0,
-                                        child: Text(
+                                        child: const Text(
                                           'Log in',
                                           style: TextStyle(color: Colors.white),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 5,
                                   ),
-                                  Text('OR', style: TextStyle(color: txtColor)),
-                                  SizedBox(
+                                  const Text('OR',
+                                      style: TextStyle(color: txtColor)),
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   Container(
@@ -261,7 +248,7 @@ class _LoginPageState extends State<LoginPage> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          Text('New User? ',
+                                          const Text('New User? ',
                                               style:
                                                   TextStyle(color: txtColor)),
                                           GestureDetector(
@@ -271,7 +258,7 @@ class _LoginPageState extends State<LoginPage> {
                                                       builder: (context) =>
                                                           RegistrationPage()));
                                             },
-                                            child: Text(
+                                            child: const Text(
                                               'Sign Up',
                                               style: TextStyle(
                                                   color: nssBlueColor),
@@ -314,7 +301,8 @@ class _LoginPageState extends State<LoginPage> {
 // Custom Button
 
 class Button extends StatelessWidget {
-  Button({required this.color, required this.txt, required this.width});
+  const Button(
+      {super.key, required this.color, required this.txt, required this.width});
   final Color color;
   final String txt;
   final double width;
@@ -324,12 +312,12 @@ class Button extends StatelessWidget {
     return Container(
       height: 40,
       width: width,
-      child: Center(child: Text(txt, style: TextStyle(fontSize: 15))),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(width: 1, color: Colors.grey),
       ),
+      child: Center(child: Text(txt, style: const TextStyle(fontSize: 15))),
     );
   }
 }

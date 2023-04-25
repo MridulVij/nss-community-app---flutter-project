@@ -1,9 +1,9 @@
 //import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 //import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
-import 'package:nss_jmieti/Auth/Views/login_view.dart';
-import 'package:nss_jmieti/UI/wev_view.dart';
+import 'package:nss_jmieti/src/constants/colors.dart';
+import 'package:nss_jmieti/src/views/auth/login_view.dart';
+import 'package:nss_jmieti/src/views/home/sidebar/other/app_guide.dart';
 
 class sideBar extends StatefulWidget {
   const sideBar({super.key});
@@ -18,12 +18,14 @@ class _sideBarState extends State<sideBar> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      shadowColor: textblack,
+      elevation: 20.0,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('NSS JMIETI COMMUNITY'),
-            accountEmail: Text('Developed in JMIETI, Radaur'),
+            accountName: const Text('NSS JMIETI COMMUNITY'),
+            accountEmail: const Text('Developed in JMIETI, Radaur'),
             currentAccountPicture: CircleAvatar(
               child: ClipOval(
                 child: Image.asset(
@@ -34,26 +36,26 @@ class _sideBarState extends State<sideBar> {
                 ),
               ),
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: nssBlueColor,
             ),
           ),
           ListTile(
-            leading: Icon(Icons.feedback),
-            title: Text('Send Feedback'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => sendFeedback())),
+            leading: const Icon(Icons.feedback),
+            title: const Text('Send Feedback'),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const sendFeedback())),
           ),
           // problem on webview
           ListTile(
-            leading: Icon(Icons.help),
-            title: Text('App Guide'),
-            onTap: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => WebViewScreen2())),
+            leading: const Icon(Icons.help),
+            title: const Text('App Guide'),
+            onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const WebViewScreen2())),
           ),
           ListTile(
-            leading: Icon(Icons.support),
-            title: Text('Support Developers'),
+            leading: const Icon(Icons.support),
+            title: const Text('Support Developers'),
             onTap: () {
               setState(() {
                 adcount--;
@@ -70,33 +72,32 @@ class _sideBarState extends State<sideBar> {
                   child: Center(
                     child: Text(
                       '$adcount',
-                      style: TextStyle(color: Colors.white, fontSize: 15.0),
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 15.0),
                     ),
                   )),
             ),
           ),
           ListTile(
-            leading: Icon(Icons.android),
-            title: Text('About Developers'),
+            leading: const Icon(Icons.android),
+            title: const Text('About Developers'),
             onTap: () => Navigator.of(context)
                 .push(MaterialPageRoute(builder: (context) => aboutDevs())),
           ),
-          Divider(),
+          const Divider(),
           ListTile(
-            leading: Icon(
+            leading: const Icon(
               Icons.logout,
               color: Colors.red,
             ),
-            title: Text('Log out', style: TextStyle(color: Colors.red)),
+            title: const Text('Log out', style: TextStyle(color: Colors.red)),
             onTap: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => LoginPage()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const LoginPage()));
             },
           ),
         ],
       ),
-      shadowColor: textblack,
-      elevation: 20.0,
       //width: 60,
     );
   }
@@ -110,7 +111,7 @@ class sendFeedback extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Submit Feedback'),
+        title: const Text('Submit Feedback'),
         elevation: 0.0,
       ),
       body: Column(children: [
@@ -128,16 +129,17 @@ class sendFeedback extends StatelessWidget {
                 //contentPadding: EdgeInsets.symmetric(vertical: 90),
 
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 0.5),
+                  borderSide: const BorderSide(width: 0.5),
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
             ),
           ),
         ),
-        Container(
+        SizedBox(
             width: 380,
-            child: ElevatedButton(onPressed: () {}, child: Text('Submit')))
+            child:
+                ElevatedButton(onPressed: () {}, child: const Text('Submit')))
       ]),
     );
   }
@@ -151,8 +153,9 @@ class sendFeedback extends StatelessWidget {
 
 // About developers
 class aboutDevs extends StatelessWidget {
+  const aboutDevs({super.key});
+
   Future<void> _launchURL(String url) async {
-    final Uri uri = Uri(scheme: 'https', host: url);
     // if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
     //   throw 'can not launch url';
     // }
@@ -187,11 +190,11 @@ class aboutDevs extends StatelessWidget {
       backgroundColor: backgnd,
       appBar: AppBar(
         elevation: 0.0,
-        title: Text('About Developers'),
+        title: const Text('About Developers'),
       ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Center(
             child: Container(
               width: 370,
@@ -205,16 +208,16 @@ class aboutDevs extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Container(
-                          margin: EdgeInsets.all(5),
-                          padding: EdgeInsets.all(5),
+                          margin: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           height: 170,
                           width: 170,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(10)),
                           child: Image.asset('assets/mayank.jpg')),
                       Container(
-                          margin: EdgeInsets.all(5),
-                          padding: EdgeInsets.all(5),
+                          margin: const EdgeInsets.all(5),
+                          padding: const EdgeInsets.all(5),
                           height: 170,
                           width: 170,
                           decoration: BoxDecoration(
@@ -224,7 +227,7 @@ class aboutDevs extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text('   Mayank Saini',
                           style: TextStyle(
                               fontSize: 20,
@@ -240,7 +243,7 @@ class aboutDevs extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: const [
                       Text(
                           '(Mern Stack Developer)\n             Builded:\n   Web Version of NSS',
                           style: TextStyle(fontSize: 15)),
@@ -260,7 +263,7 @@ class aboutDevs extends StatelessWidget {
                         //width: 100,
                         //alignment: Alignment.center,
                       ),
-                      SizedBox(width: 75),
+                      const SizedBox(width: 75),
                       Image.asset(
                         'assets/mern.jpg',
                         height: 40,
@@ -269,7 +272,7 @@ class aboutDevs extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(),
+                  const Divider(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -286,7 +289,7 @@ class aboutDevs extends StatelessWidget {
                           //height: 80,
                         ),
                       ),
-                      SizedBox(width: 111),
+                      const SizedBox(width: 111),
                       GestureDetector(
                           onTap: () {
                             _launchURL(
@@ -302,7 +305,7 @@ class aboutDevs extends StatelessWidget {
               ),
             ),
           ),
-          Divider(indent: 20, endIndent: 20),
+          const Divider(indent: 20, endIndent: 20),
           Container(
             width: 200,
             decoration: BoxDecoration(
@@ -318,13 +321,13 @@ class aboutDevs extends StatelessWidget {
                     Container(
                         width: 170,
                         height: 170,
-                        margin: EdgeInsets.all(10),
+                        margin: const EdgeInsets.all(10),
                         child: Image.asset('assets/mridul.jpg')),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text('Mridul Vij',
                         style: TextStyle(
                             fontSize: 20,
@@ -334,7 +337,7 @@ class aboutDevs extends StatelessWidget {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                         '         (Flutter Developer)\n        Founder at @Creatify\n Builded: App Version of NSS',
                         style: TextStyle(fontSize: 15)),
@@ -352,7 +355,7 @@ class aboutDevs extends StatelessWidget {
                     ),
                   ],
                 ),
-                Divider(),
+                const Divider(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

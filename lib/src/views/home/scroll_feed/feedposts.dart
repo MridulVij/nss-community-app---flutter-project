@@ -1,10 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/UI/colors/colors.dart';
+import 'package:nss_jmieti/src/constants/colors.dart';
 import 'package:share_plus/share_plus.dart';
-//import 'package:google_mobile_ads/google_mobile_ads.dart';
-//import 'package:ourads/ourads.dart';
-//import 'package:image_picker/image_picker.dart';
 
 class feedPosts extends StatefulWidget {
   const feedPosts({super.key});
@@ -14,25 +10,25 @@ class feedPosts extends StatefulWidget {
 }
 
 class _feedPostsState extends State<feedPosts> {
-  final usernameText =
-      TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
-  final headLineText = TextStyle(fontSize: 15, color: txtColor);
+  final usernameText = const TextStyle(
+      fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
+  final headLineText = const TextStyle(fontSize: 15, color: txtColor);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           border:
               BorderDirectional(bottom: BorderSide(width: 10, color: backgnd))),
       child: Column(children: [
         Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
-              CircleAvatar(
+              const CircleAvatar(
                 radius: 26,
                 backgroundColor: backgnd,
               ),
-              SizedBox(width: 10),
+              const SizedBox(width: 10),
               Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,13 +47,13 @@ class _feedPostsState extends State<feedPosts> {
                       style: headLineText,
                       //textAlign: TextAlign.left,
                     ),
-                    Text('Sec ago',
+                    const Text('Sec ago',
                         style: TextStyle(fontSize: 11, color: Colors.grey)),
                   ]),
               Padding(
                 padding: const EdgeInsets.fromLTRB(225, 0, 0, 0),
                 child: GestureDetector(
-                  child: Icon(
+                  child: const Icon(
                     Icons.more_vert,
                     size: 25,
                     color: gry,
@@ -67,8 +63,8 @@ class _feedPostsState extends State<feedPosts> {
               )
             ])),
 
-        Padding(
-          padding: const EdgeInsets.all(8.0),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
           child: Text(
               'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum',
               style: TextStyle(color: textblack)),
@@ -80,7 +76,7 @@ class _feedPostsState extends State<feedPosts> {
           width: 400,
           //child: Image.asset('assets/mayank.jpg')
         ),
-        Divider(),
+        const Divider(),
         Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(
@@ -117,8 +113,8 @@ class _feedPostsState extends State<feedPosts> {
                                   )));
                     },
                     child: Container(
-                        margin: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                        child: Icon(
+                        margin: const EdgeInsets.fromLTRB(20, 0, 0, 0),
+                        child: const Icon(
                           Icons.mode_comment_outlined,
                           size: 28,
                           color: gry,
@@ -130,8 +126,8 @@ class _feedPostsState extends State<feedPosts> {
                           "Hi, I Created my Post on NSS JMIETI\n\nJoin Now NSS Community\nRegister here: https://nssjmieti.netlify.app/register \n\tor\nDownload the Nss Community App Now: https://creatifyappsstore.blogspot.com/2023/03/nss-community-app.html");
                     },
                     child: Container(
-                        margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
-                        child: Icon(
+                        margin: const EdgeInsets.fromLTRB(250, 0, 0, 0),
+                        child: const Icon(
                           Icons.share_outlined,
                           size: 28,
                           color: gry,
@@ -141,13 +137,13 @@ class _feedPostsState extends State<feedPosts> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   SizedBox(width: 5),
                   Text('9999 likes',
                       textAlign: TextAlign.right,
                       style: TextStyle(fontSize: 13, color: textblack)),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(8, 0, 0, 0),
+                    padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
                     child: Text('9999 Comments',
                         textAlign: TextAlign.right,
                         style: TextStyle(fontSize: 13, color: textblack)),
@@ -172,8 +168,9 @@ class _feedPostsState extends State<feedPosts> {
 
 // like , dislike, comment , share button
 class lscButton extends StatelessWidget {
-  lscButton(this.like, this.dislike, this.comments, this.share, this.margin,
-      this.icon);
+  const lscButton(this.like, this.dislike, this.comments, this.share,
+      this.margin, this.icon,
+      {super.key});
   final like;
   final dislike;
   final comments;
@@ -186,8 +183,8 @@ class lscButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-          margin: EdgeInsets.fromLTRB(250, 0, 0, 0),
-          child: Icon(
+          margin: const EdgeInsets.fromLTRB(250, 0, 0, 0),
+          child: const Icon(
             Icons.share_outlined,
             size: 28,
             color: gry,
@@ -206,14 +203,14 @@ class comments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _userTextStyle =
+    const _userTextStyle =
         TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: textblack);
-    final _commentTextStyle = TextStyle(
+    const _commentTextStyle = TextStyle(
         fontSize: 15, fontWeight: FontWeight.normal, color: textblack);
-    final _timingTextstyle =
+    const _timingTextstyle =
         TextStyle(fontSize: 13.0, fontWeight: FontWeight.normal, color: gry);
     return Scaffold(
-      appBar: AppBar(title: Text('Comments'), elevation: 0.0),
+      appBar: AppBar(title: const Text('Comments'), elevation: 0.0),
       body: SafeArea(
         child: Column(
           children: [
@@ -223,26 +220,26 @@ class comments extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
+                  SizedBox(
                     width: 310,
                     child: TextFormField(
                       decoration: InputDecoration(
                         hintText: 'Add a Comment',
                         border: OutlineInputBorder(
-                          borderSide: BorderSide(width: 1),
+                          borderSide: const BorderSide(width: 1),
                           borderRadius: BorderRadius.circular(50),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(width: 1),
+                  const SizedBox(width: 1),
                   Container(
                     height: 55,
                     width: 55,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50),
                         color: backgnd),
-                    child: Center(child: Icon(Icons.send)),
+                    child: const Center(child: Icon(Icons.send)),
                   ),
                 ],
               ),
@@ -251,8 +248,8 @@ class comments extends StatelessWidget {
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 280),
+                    const Padding(
+                      padding: EdgeInsets.only(right: 280),
                       child: Text('Latest Comments', style: _timingTextstyle),
                     ),
                     Column(
@@ -261,8 +258,8 @@ class comments extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Padding(
-                                padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                                padding: EdgeInsets.all(8.0),
                                 child: Icon(
                                   Icons.account_circle,
                                   size: 30,
@@ -286,7 +283,7 @@ class comments extends StatelessWidget {
                         )
                       ],
                     ),
-                    Divider(
+                    const Divider(
                       indent: 20,
                       endIndent: 20,
                     ),
