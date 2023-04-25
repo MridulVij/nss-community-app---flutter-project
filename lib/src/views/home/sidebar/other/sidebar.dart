@@ -81,8 +81,8 @@ class _sideBarState extends State<sideBar> {
           ListTile(
             leading: const Icon(Icons.android),
             title: const Text('About Developers'),
-            onTap: () => Navigator.of(context)
-                .push(MaterialPageRoute(builder: (context) => aboutDevs())),
+            onTap: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const aboutDevs())),
           ),
           const Divider(),
           ListTile(
