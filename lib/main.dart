@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:nss_jmieti/src/views/home/home.dart';
+import 'package:get/get.dart';
+import 'package:nss_jmieti/src/views/home/home/home.dart';
 import 'package:nss_jmieti/src/views/home/profile/profile.dart';
 import 'src/constants/colors.dart';
 import 'src/views/home/notifications/notifications.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //final nss1BlueColor = Color.fromRGBO(48, 57, 131, 1);
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
               seedColor: nssBlueColor,
@@ -39,6 +40,7 @@ class spareScreen extends StatefulWidget {
 
 class _spareScreenState extends State<spareScreen> {
   int myIndex = 0;
+
   List<Widget> widgetList = [
     // Indexing of bottombar
     const homePage(),
@@ -85,138 +87,3 @@ class _spareScreenState extends State<spareScreen> {
     );
   }
 }
-
-// // post bar
-
-// class PostMediaPage extends StatefulWidget {
-//   @override
-//   _PostMediaPageState createState() => _PostMediaPageState();
-// }
-
-// class _PostMediaPageState extends State<PostMediaPage> {
-//   File? _mediaFile;
-//   final picker = ImagePicker();
-
-//   Future _pickMedia(ImageSource source) async {
-//     final pickedFile = await picker.pickVideo(
-//         source: source, maxDuration: const Duration(seconds: 30));
-//     setState(() {
-//       _mediaFile = File(pickedFile!.path);
-//     });
-//   }
-
-//   Future _postMedia() async {
-//     // Video api
-//     final url = Uri.parse('https://your-backend-api-url.com/post-media');
-//     final request = http.MultipartRequest('POST', url)
-//       ..files.add(await http.MultipartFile.fromPath('media', _mediaFile!.path));
-//     final response = await request.send();
-//     if (response.statusCode == 200) {
-//       // Media was successfully posted to the backend API.
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//         content: Text('Media posted successfully'),
-//       ));
-//     } else {
-//       // Error occurred while posting media to the backend API.
-//       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-//         content: Text('Error posting media'),
-//       ));
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Post Media'),
-//       ),
-//       body: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: <Widget>[
-//           Center(
-//             child: _mediaFile == null
-//                 ? Text('No media selected')
-//                 : SizedBox(
-//                     height: 300.0,
-//                     child: Image.file(_mediaFile!),
-//                   ),
-//           ),
-//           Row(
-//             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//             children: <Widget>[
-//               ElevatedButton(
-//                 onPressed: () => _pickMedia(ImageSource.gallery),
-//                 child: Text('Select Video'),
-//               ),
-//               ElevatedButton(
-//                 onPressed: _mediaFile == null ? null : _postMedia,
-//                 child: Text('Post Media'),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-// //import 'dart:io';
-
-// //import 'package:flutter/material.dart';
-// //import 'package:http/http.dart' as http;
-
-// class MyPage extends StatefulWidget {
-//   @override
-//   _MyPageState createState() => _MyPageState();
-// }
-
-// class _MyPageState extends State<MyPage> {
-//   File? _image;
-
-//   Future<void> _pickImage() async {
-//     final pickedFile =
-//         await ImagePicker().getImage(source: ImageSource.gallery);
-
-//     if (pickedFile != null) {
-//       setState(() {
-//         _image = File(pickedFile.path);
-//       });
-
-//       // Send the image to the backend API
-//       final response = await http.post(
-//         Uri.parse('https://your-backend-api.com/upload-image'),
-//         body: {
-//           'file': await http.MultipartFile.fromPath('file', _image!.path),
-//         },
-//       );
-
-//       if (response.statusCode == 200) {
-//         // Image uploaded successfully
-//       } else {
-//         // Handle the error
-//       }
-//     }
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Pick Image'),
-//       ),
-//       body: Center(
-//         child: Column(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             _image == null ? Text('No image selected.') : Image.file(_image!),
-//             SizedBox(height: 20),
-//             ElevatedButton(
-//               onPressed: _pickImage,
-//               child: Text('Pick Image'),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

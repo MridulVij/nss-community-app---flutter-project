@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nss_jmieti/src/constants/colors.dart';
 import 'package:get/get.dart';
-import 'package:nss_jmieti/src/views/home/home.dart';
+import 'package:nss_jmieti/src/views/home/home/home.dart';
 import 'package:nss_jmieti/src/views/auth/login_view.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;

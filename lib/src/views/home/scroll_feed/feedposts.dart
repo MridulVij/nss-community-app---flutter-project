@@ -14,6 +14,9 @@ class _feedPostsState extends State<feedPosts> {
       fontSize: 18, fontWeight: FontWeight.bold, color: Colors.black);
   final headLineText = const TextStyle(fontSize: 15, color: txtColor);
 
+  ///
+  ///final username = Data().userName;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,7 +40,7 @@ class _feedPostsState extends State<feedPosts> {
                     //   padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
                     //child:
                     Text(
-                      'Mridul Vij',
+                      "Mridul Vij",
                       style: usernameText,
                       //textAlign: TextAlign.left,
                     ),
@@ -92,13 +95,13 @@ class _feedPostsState extends State<feedPosts> {
                       });
                     },
                     child: Container(
-                      // margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                      child: Image.asset(
-                        'assets/dislike2.png',
-                        width: 28,
-                        color: gry,
-                      ),
-                    ),
+                        // margin: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                        // child: Image.asset(
+                        //   'assets/dislike2.png',
+                        //   width: 28,
+                        //   color: gry,
+                        // ),
+                        ),
                   ),
                   GestureDetector(
                     onTap: () {

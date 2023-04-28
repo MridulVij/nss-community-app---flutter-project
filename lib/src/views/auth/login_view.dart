@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:nss_jmieti/main.dart';
 import 'package:nss_jmieti/src/constants/colors.dart';
 import 'package:nss_jmieti/src/views/auth/signup_view.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -17,6 +20,11 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
 
   bool _isLoading = false;
+
+  //
+  void token(jsonResponse) {
+    final token = jsonResponse["maintoken"];
+  }
 
   Future<void> _login() async {
     setState(() {
@@ -43,7 +51,11 @@ class _LoginPageState extends State<LoginPage> {
 
     if (response.statusCode == 200) {
       // registration successful, display success message
-      // String token = response["maintoken"];
+      final jsonResponse = jsonDecode(response.body);
+      String token = jsonResponse["maintoken"];
+
+      final SharedPreferences sp = await SharedPreferences.getInstance();
+      sp.setString('token', token);
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -56,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: const Text('OK'),
                 onPressed: () {
                   // go to sparescreen
+                  Get.to(spareScreen());
                 },
               ),
             ],
@@ -214,17 +227,11 @@ class _LoginPageState extends State<LoginPage> {
                                       child: MaterialButton(
                                         onPressed: () async {
                                           //Implement signup functionality.
+
                                           if (_formKey.currentState!
                                               .validate()) {
                                             _login();
                                           }
-                                          // final SharedPreferences
-                                          //     sharedPreferences =
-                                          //     await SharedPreferences
-                                          //         .getInstance();
-                                          // sharedPreferences.setString(
-                                          //     'email', _emailController.text);
-                                          // Get.to(spareScreen());
                                         },
                                         minWidth: double.maxFinite,
                                         height: 50.0,
